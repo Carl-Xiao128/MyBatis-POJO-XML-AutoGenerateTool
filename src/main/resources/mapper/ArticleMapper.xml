@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wupao.job.mapper.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.wupao.job.pojo.Article" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="view" property="view" jdbcType="INTEGER" />
+    <result column="zan" property="zan" jdbcType="INTEGER" />
+    <result column="mark" property="mark" jdbcType="INTEGER" />
+    <result column="two_type" property="twoType" jdbcType="INTEGER" />
+    <result column="is_top" property="isTop" jdbcType="BIT" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.wupao.job.pojo.Article" extends="BaseResultMap" >
+    <result column="contect" property="contect" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, uid, title, view, zan, mark, two_type, is_top, insert_time, update_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    contect
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wupao.job.pojo.Article" >
+    insert into article (id, type, uid, 
+      title, view, zan, mark, 
+      two_type, is_top, insert_time, 
+      update_time, contect)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{view,jdbcType=INTEGER}, #{zan,jdbcType=INTEGER}, #{mark,jdbcType=INTEGER}, 
+      #{twoType,jdbcType=INTEGER}, #{isTop,jdbcType=BIT}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{contect,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wupao.job.pojo.Article" >
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="view != null" >
+        view,
+      </if>
+      <if test="zan != null" >
+        zan,
+      </if>
+      <if test="mark != null" >
+        mark,
+      </if>
+      <if test="twoType != null" >
+        two_type,
+      </if>
+      <if test="isTop != null" >
+        is_top,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="contect != null" >
+        contect,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="view != null" >
+        #{view,jdbcType=INTEGER},
+      </if>
+      <if test="zan != null" >
+        #{zan,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null" >
+        #{mark,jdbcType=INTEGER},
+      </if>
+      <if test="twoType != null" >
+        #{twoType,jdbcType=INTEGER},
+      </if>
+      <if test="isTop != null" >
+        #{isTop,jdbcType=BIT},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contect != null" >
+        #{contect,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wupao.job.pojo.Article" >
+    update article
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="view != null" >
+        view = #{view,jdbcType=INTEGER},
+      </if>
+      <if test="zan != null" >
+        zan = #{zan,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null" >
+        mark = #{mark,jdbcType=INTEGER},
+      </if>
+      <if test="twoType != null" >
+        two_type = #{twoType,jdbcType=INTEGER},
+      </if>
+      <if test="isTop != null" >
+        is_top = #{isTop,jdbcType=BIT},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contect != null" >
+        contect = #{contect,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wupao.job.pojo.Article" >
+    update article
+    set type = #{type,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      view = #{view,jdbcType=INTEGER},
+      zan = #{zan,jdbcType=INTEGER},
+      mark = #{mark,jdbcType=INTEGER},
+      two_type = #{twoType,jdbcType=INTEGER},
+      is_top = #{isTop,jdbcType=BIT},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      contect = #{contect,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wupao.job.pojo.Article" >
+    update article
+    set type = #{type,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      view = #{view,jdbcType=INTEGER},
+      zan = #{zan,jdbcType=INTEGER},
+      mark = #{mark,jdbcType=INTEGER},
+      two_type = #{twoType,jdbcType=INTEGER},
+      is_top = #{isTop,jdbcType=BIT},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

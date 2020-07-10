@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weiss.admin.mapper.OrderRemarkMapper">
+  <resultMap id="BaseResultMap" type="com.weiss.admin.pojo.OrderRemark">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="remark_type" jdbcType="INTEGER" property="remarkType" />
+    <result column="operate_uid" jdbcType="BIGINT" property="operateUid" />
+    <result column="remark_content" jdbcType="VARCHAR" property="remarkContent" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_id, remark_type, operate_uid, remark_content, insert_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_remark
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from order_remark
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.weiss.admin.pojo.OrderRemark">
+    insert into order_remark (id, order_id, remark_type, 
+      operate_uid, remark_content, insert_time, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{remarkType,jdbcType=INTEGER}, 
+      #{operateUid,jdbcType=BIGINT}, #{remarkContent,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiss.admin.pojo.OrderRemark">
+    insert into order_remark
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="remarkType != null">
+        remark_type,
+      </if>
+      <if test="operateUid != null">
+        operate_uid,
+      </if>
+      <if test="remarkContent != null">
+        remark_content,
+      </if>
+      <if test="insertTime != null">
+        insert_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="remarkType != null">
+        #{remarkType,jdbcType=INTEGER},
+      </if>
+      <if test="operateUid != null">
+        #{operateUid,jdbcType=BIGINT},
+      </if>
+      <if test="remarkContent != null">
+        #{remarkContent,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiss.admin.pojo.OrderRemark">
+    update order_remark
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="remarkType != null">
+        remark_type = #{remarkType,jdbcType=INTEGER},
+      </if>
+      <if test="operateUid != null">
+        operate_uid = #{operateUid,jdbcType=BIGINT},
+      </if>
+      <if test="remarkContent != null">
+        remark_content = #{remarkContent,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiss.admin.pojo.OrderRemark">
+    update order_remark
+    set order_id = #{orderId,jdbcType=BIGINT},
+      remark_type = #{remarkType,jdbcType=INTEGER},
+      operate_uid = #{operateUid,jdbcType=BIGINT},
+      remark_content = #{remarkContent,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.weiss.admin.pojo.OrderRemark">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="remark_type" jdbcType="INTEGER" property="remarkType" />
+    <result column="operate_uid" jdbcType="INTEGER" property="operateUid" />
+    <result column="remark_content" jdbcType="VARCHAR" property="remarkContent" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_id, remark_type, operate_uid, remark_content, insert_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_remark
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_remark
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weiss.admin.pojo.OrderRemark">
+    insert into order_remark (id, order_id, remark_type, 
+      operate_uid, remark_content, insert_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{remarkType,jdbcType=INTEGER}, 
+      #{operateUid,jdbcType=INTEGER}, #{remarkContent,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiss.admin.pojo.OrderRemark">
+    insert into order_remark
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="remarkType != null">
+        remark_type,
+      </if>
+      <if test="operateUid != null">
+        operate_uid,
+      </if>
+      <if test="remarkContent != null">
+        remark_content,
+      </if>
+      <if test="insertTime != null">
+        insert_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="remarkType != null">
+        #{remarkType,jdbcType=INTEGER},
+      </if>
+      <if test="operateUid != null">
+        #{operateUid,jdbcType=INTEGER},
+      </if>
+      <if test="remarkContent != null">
+        #{remarkContent,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiss.admin.pojo.OrderRemark">
+    update order_remark
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="remarkType != null">
+        remark_type = #{remarkType,jdbcType=INTEGER},
+      </if>
+      <if test="operateUid != null">
+        operate_uid = #{operateUid,jdbcType=INTEGER},
+      </if>
+      <if test="remarkContent != null">
+        remark_content = #{remarkContent,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiss.admin.pojo.OrderRemark">
+    update order_remark
+    set order_id = #{orderId,jdbcType=INTEGER},
+      remark_type = #{remarkType,jdbcType=INTEGER},
+      operate_uid = #{operateUid,jdbcType=INTEGER},
+      remark_content = #{remarkContent,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

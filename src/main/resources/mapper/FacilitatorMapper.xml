@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wupao.job.mapper.FacilitatorMapper" >
+  <resultMap id="BaseResultMap" type="com.wupao.job.pojo.Facilitator" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="company_website" property="companyWebsite" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="prov" property="prov" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="company_addr" property="companyAddr" jdbcType="VARCHAR" />
+    <result column="service_type" property="serviceType" jdbcType="INTEGER" />
+    <result column="service_item" property="serviceItem" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="umobile" property="umobile" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="business_license" property="businessLicense" jdbcType="VARCHAR" />
+    <result column="examine_uid" property="examineUid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="examine_time" property="examineTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company, company_website, area, prov, city, company_addr, service_type, service_item, 
+    username, umobile, qq, position, business_license, examine_uid, status, insert_time, 
+    update_time, examine_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from facilitator
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from facilitator
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wupao.job.pojo.Facilitator" >
+    insert into facilitator (id, company, company_website, 
+      area, prov, city, company_addr, 
+      service_type, service_item, username, 
+      umobile, qq, position, 
+      business_license, examine_uid, status, 
+      insert_time, update_time, examine_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{company,jdbcType=VARCHAR}, #{companyWebsite,jdbcType=VARCHAR}, 
+      #{area,jdbcType=VARCHAR}, #{prov,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{companyAddr,jdbcType=VARCHAR}, 
+      #{serviceType,jdbcType=INTEGER}, #{serviceItem,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{umobile,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{businessLicense,jdbcType=VARCHAR}, #{examineUid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{insertTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{examineTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wupao.job.pojo.Facilitator" >
+    insert into facilitator
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="companyWebsite != null" >
+        company_website,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="prov != null" >
+        prov,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="companyAddr != null" >
+        company_addr,
+      </if>
+      <if test="serviceType != null" >
+        service_type,
+      </if>
+      <if test="serviceItem != null" >
+        service_item,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="umobile != null" >
+        umobile,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="businessLicense != null" >
+        business_license,
+      </if>
+      <if test="examineUid != null" >
+        examine_uid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="examineTime != null" >
+        examine_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWebsite != null" >
+        #{companyWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="prov != null" >
+        #{prov,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddr != null" >
+        #{companyAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null" >
+        #{serviceType,jdbcType=INTEGER},
+      </if>
+      <if test="serviceItem != null" >
+        #{serviceItem,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="umobile != null" >
+        #{umobile,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="examineUid != null" >
+        #{examineUid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examineTime != null" >
+        #{examineTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wupao.job.pojo.Facilitator" >
+    update facilitator
+    <set >
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWebsite != null" >
+        company_website = #{companyWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="prov != null" >
+        prov = #{prov,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddr != null" >
+        company_addr = #{companyAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null" >
+        service_type = #{serviceType,jdbcType=INTEGER},
+      </if>
+      <if test="serviceItem != null" >
+        service_item = #{serviceItem,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="umobile != null" >
+        umobile = #{umobile,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        business_license = #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="examineUid != null" >
+        examine_uid = #{examineUid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examineTime != null" >
+        examine_time = #{examineTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wupao.job.pojo.Facilitator" >
+    update facilitator
+    set company = #{company,jdbcType=VARCHAR},
+      company_website = #{companyWebsite,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      prov = #{prov,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      company_addr = #{companyAddr,jdbcType=VARCHAR},
+      service_type = #{serviceType,jdbcType=INTEGER},
+      service_item = #{serviceItem,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      umobile = #{umobile,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      business_license = #{businessLicense,jdbcType=VARCHAR},
+      examine_uid = #{examineUid,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      examine_time = #{examineTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

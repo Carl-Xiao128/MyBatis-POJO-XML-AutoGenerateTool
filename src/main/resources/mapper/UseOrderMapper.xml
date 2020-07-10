@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiss.admin.mapper.UseOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.weiss.admin.pojo.UseOrder" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="odid" property="odid" jdbcType="VARCHAR" />
+    <result column="wxmp_id" property="wxmpId" jdbcType="INTEGER" />
+    <result column="buy_uid" property="buyUid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="hand_money" property="handMoney" jdbcType="DECIMAL" />
+    <result column="sale_hand_money" property="saleHandMoney" jdbcType="DECIMAL" />
+    <result column="sale_money" property="saleMoney" jdbcType="DECIMAL" />
+    <result column="is_deposit" property="isDeposit" jdbcType="INTEGER" />
+    <result column="deposit" property="deposit" jdbcType="DECIMAL" />
+    <result column="deposit_time" property="depositTime" jdbcType="TIMESTAMP" />
+    <result column="deposit_day" property="depositDay" jdbcType="INTEGER" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="deal_time" property="dealTime" jdbcType="TIMESTAMP" />
+    <result column="is_del" property="isDel" jdbcType="BIT" />
+    <result column="sale_name" property="saleName" jdbcType="VARCHAR" />
+    <result column="sale_phone" property="salePhone" jdbcType="VARCHAR" />
+    <result column="sale_weixin" property="saleWeixin" jdbcType="VARCHAR" />
+    <result column="sale_qq" property="saleQq" jdbcType="VARCHAR" />
+    <result column="buy_name" property="buyName" jdbcType="VARCHAR" />
+    <result column="buy_phone" property="buyPhone" jdbcType="VARCHAR" />
+    <result column="buy_weixin" property="buyWeixin" jdbcType="VARCHAR" />
+    <result column="buy_qq" property="buyQq" jdbcType="VARCHAR" />
+    <result column="deal_id" property="dealId" jdbcType="INTEGER" />
+    <result column="sale_deposit" property="saleDeposit" jdbcType="DECIMAL" />
+    <result column="sale_deposit_status" property="saleDepositStatus" jdbcType="INTEGER" />
+    <result column="sale_commission" property="saleCommission" jdbcType="DECIMAL" />
+    <result column="buy_commission" property="buyCommission" jdbcType="DECIMAL" />
+    <result column="default_status" property="defaultStatus" jdbcType="INTEGER" />
+    <result column="penalty_money" property="penaltyMoney" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, odid, wxmp_id, buy_uid, status, money, insert_time, hand_money, sale_hand_money, 
+    sale_money, is_deposit, deposit, deposit_time, deposit_day, pay_time, update_time, 
+    deal_time, is_del, sale_name, sale_phone, sale_weixin, sale_qq, buy_name, buy_phone, 
+    buy_weixin, buy_qq, deal_id, sale_deposit, sale_deposit_status, sale_commission, 
+    buy_commission, default_status, penalty_money
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from use_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from use_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weiss.admin.pojo.UseOrder" >
+    insert into use_order (id, odid, wxmp_id, 
+      buy_uid, status, money, 
+      insert_time, hand_money, sale_hand_money, 
+      sale_money, is_deposit, deposit, 
+      deposit_time, deposit_day, pay_time, 
+      update_time, deal_time, is_del, 
+      sale_name, sale_phone, sale_weixin, 
+      sale_qq, buy_name, buy_phone, 
+      buy_weixin, buy_qq, deal_id, 
+      sale_deposit, sale_deposit_status, sale_commission, 
+      buy_commission, default_status, penalty_money
+      )
+    values (#{id,jdbcType=INTEGER}, #{odid,jdbcType=VARCHAR}, #{wxmpId,jdbcType=INTEGER}, 
+      #{buyUid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{money,jdbcType=DECIMAL}, 
+      #{insertTime,jdbcType=TIMESTAMP}, #{handMoney,jdbcType=DECIMAL}, #{saleHandMoney,jdbcType=DECIMAL}, 
+      #{saleMoney,jdbcType=DECIMAL}, #{isDeposit,jdbcType=INTEGER}, #{deposit,jdbcType=DECIMAL}, 
+      #{depositTime,jdbcType=TIMESTAMP}, #{depositDay,jdbcType=INTEGER}, #{payTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{dealTime,jdbcType=TIMESTAMP}, #{isDel,jdbcType=BIT}, 
+      #{saleName,jdbcType=VARCHAR}, #{salePhone,jdbcType=VARCHAR}, #{saleWeixin,jdbcType=VARCHAR}, 
+      #{saleQq,jdbcType=VARCHAR}, #{buyName,jdbcType=VARCHAR}, #{buyPhone,jdbcType=VARCHAR}, 
+      #{buyWeixin,jdbcType=VARCHAR}, #{buyQq,jdbcType=VARCHAR}, #{dealId,jdbcType=INTEGER}, 
+      #{saleDeposit,jdbcType=DECIMAL}, #{saleDepositStatus,jdbcType=INTEGER}, #{saleCommission,jdbcType=DECIMAL}, 
+      #{buyCommission,jdbcType=DECIMAL}, #{defaultStatus,jdbcType=INTEGER}, #{penaltyMoney,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiss.admin.pojo.UseOrder" >
+    insert into use_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="odid != null" >
+        odid,
+      </if>
+      <if test="wxmpId != null" >
+        wxmp_id,
+      </if>
+      <if test="buyUid != null" >
+        buy_uid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="handMoney != null" >
+        hand_money,
+      </if>
+      <if test="saleHandMoney != null" >
+        sale_hand_money,
+      </if>
+      <if test="saleMoney != null" >
+        sale_money,
+      </if>
+      <if test="isDeposit != null" >
+        is_deposit,
+      </if>
+      <if test="deposit != null" >
+        deposit,
+      </if>
+      <if test="depositTime != null" >
+        deposit_time,
+      </if>
+      <if test="depositDay != null" >
+        deposit_day,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="dealTime != null" >
+        deal_time,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="saleName != null" >
+        sale_name,
+      </if>
+      <if test="salePhone != null" >
+        sale_phone,
+      </if>
+      <if test="saleWeixin != null" >
+        sale_weixin,
+      </if>
+      <if test="saleQq != null" >
+        sale_qq,
+      </if>
+      <if test="buyName != null" >
+        buy_name,
+      </if>
+      <if test="buyPhone != null" >
+        buy_phone,
+      </if>
+      <if test="buyWeixin != null" >
+        buy_weixin,
+      </if>
+      <if test="buyQq != null" >
+        buy_qq,
+      </if>
+      <if test="dealId != null" >
+        deal_id,
+      </if>
+      <if test="saleDeposit != null" >
+        sale_deposit,
+      </if>
+      <if test="saleDepositStatus != null" >
+        sale_deposit_status,
+      </if>
+      <if test="saleCommission != null" >
+        sale_commission,
+      </if>
+      <if test="buyCommission != null" >
+        buy_commission,
+      </if>
+      <if test="defaultStatus != null" >
+        default_status,
+      </if>
+      <if test="penaltyMoney != null" >
+        penalty_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="odid != null" >
+        #{odid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxmpId != null" >
+        #{wxmpId,jdbcType=INTEGER},
+      </if>
+      <if test="buyUid != null" >
+        #{buyUid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handMoney != null" >
+        #{handMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="saleHandMoney != null" >
+        #{saleHandMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="saleMoney != null" >
+        #{saleMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="isDeposit != null" >
+        #{isDeposit,jdbcType=INTEGER},
+      </if>
+      <if test="deposit != null" >
+        #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="depositTime != null" >
+        #{depositTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="depositDay != null" >
+        #{depositDay,jdbcType=INTEGER},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealTime != null" >
+        #{dealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=BIT},
+      </if>
+      <if test="saleName != null" >
+        #{saleName,jdbcType=VARCHAR},
+      </if>
+      <if test="salePhone != null" >
+        #{salePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="saleWeixin != null" >
+        #{saleWeixin,jdbcType=VARCHAR},
+      </if>
+      <if test="saleQq != null" >
+        #{saleQq,jdbcType=VARCHAR},
+      </if>
+      <if test="buyName != null" >
+        #{buyName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyPhone != null" >
+        #{buyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="buyWeixin != null" >
+        #{buyWeixin,jdbcType=VARCHAR},
+      </if>
+      <if test="buyQq != null" >
+        #{buyQq,jdbcType=VARCHAR},
+      </if>
+      <if test="dealId != null" >
+        #{dealId,jdbcType=INTEGER},
+      </if>
+      <if test="saleDeposit != null" >
+        #{saleDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="saleDepositStatus != null" >
+        #{saleDepositStatus,jdbcType=INTEGER},
+      </if>
+      <if test="saleCommission != null" >
+        #{saleCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="buyCommission != null" >
+        #{buyCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultStatus != null" >
+        #{defaultStatus,jdbcType=INTEGER},
+      </if>
+      <if test="penaltyMoney != null" >
+        #{penaltyMoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiss.admin.pojo.UseOrder" >
+    update use_order
+    <set >
+      <if test="odid != null" >
+        odid = #{odid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxmpId != null" >
+        wxmp_id = #{wxmpId,jdbcType=INTEGER},
+      </if>
+      <if test="buyUid != null" >
+        buy_uid = #{buyUid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handMoney != null" >
+        hand_money = #{handMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="saleHandMoney != null" >
+        sale_hand_money = #{saleHandMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="saleMoney != null" >
+        sale_money = #{saleMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="isDeposit != null" >
+        is_deposit = #{isDeposit,jdbcType=INTEGER},
+      </if>
+      <if test="deposit != null" >
+        deposit = #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="depositTime != null" >
+        deposit_time = #{depositTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="depositDay != null" >
+        deposit_day = #{depositDay,jdbcType=INTEGER},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealTime != null" >
+        deal_time = #{dealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="saleName != null" >
+        sale_name = #{saleName,jdbcType=VARCHAR},
+      </if>
+      <if test="salePhone != null" >
+        sale_phone = #{salePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="saleWeixin != null" >
+        sale_weixin = #{saleWeixin,jdbcType=VARCHAR},
+      </if>
+      <if test="saleQq != null" >
+        sale_qq = #{saleQq,jdbcType=VARCHAR},
+      </if>
+      <if test="buyName != null" >
+        buy_name = #{buyName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyPhone != null" >
+        buy_phone = #{buyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="buyWeixin != null" >
+        buy_weixin = #{buyWeixin,jdbcType=VARCHAR},
+      </if>
+      <if test="buyQq != null" >
+        buy_qq = #{buyQq,jdbcType=VARCHAR},
+      </if>
+      <if test="dealId != null" >
+        deal_id = #{dealId,jdbcType=INTEGER},
+      </if>
+      <if test="saleDeposit != null" >
+        sale_deposit = #{saleDeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="saleDepositStatus != null" >
+        sale_deposit_status = #{saleDepositStatus,jdbcType=INTEGER},
+      </if>
+      <if test="saleCommission != null" >
+        sale_commission = #{saleCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="buyCommission != null" >
+        buy_commission = #{buyCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultStatus != null" >
+        default_status = #{defaultStatus,jdbcType=INTEGER},
+      </if>
+      <if test="penaltyMoney != null" >
+        penalty_money = #{penaltyMoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiss.admin.pojo.UseOrder" >
+    update use_order
+    set odid = #{odid,jdbcType=VARCHAR},
+      wxmp_id = #{wxmpId,jdbcType=INTEGER},
+      buy_uid = #{buyUid,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      money = #{money,jdbcType=DECIMAL},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      hand_money = #{handMoney,jdbcType=DECIMAL},
+      sale_hand_money = #{saleHandMoney,jdbcType=DECIMAL},
+      sale_money = #{saleMoney,jdbcType=DECIMAL},
+      is_deposit = #{isDeposit,jdbcType=INTEGER},
+      deposit = #{deposit,jdbcType=DECIMAL},
+      deposit_time = #{depositTime,jdbcType=TIMESTAMP},
+      deposit_day = #{depositDay,jdbcType=INTEGER},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      deal_time = #{dealTime,jdbcType=TIMESTAMP},
+      is_del = #{isDel,jdbcType=BIT},
+      sale_name = #{saleName,jdbcType=VARCHAR},
+      sale_phone = #{salePhone,jdbcType=VARCHAR},
+      sale_weixin = #{saleWeixin,jdbcType=VARCHAR},
+      sale_qq = #{saleQq,jdbcType=VARCHAR},
+      buy_name = #{buyName,jdbcType=VARCHAR},
+      buy_phone = #{buyPhone,jdbcType=VARCHAR},
+      buy_weixin = #{buyWeixin,jdbcType=VARCHAR},
+      buy_qq = #{buyQq,jdbcType=VARCHAR},
+      deal_id = #{dealId,jdbcType=INTEGER},
+      sale_deposit = #{saleDeposit,jdbcType=DECIMAL},
+      sale_deposit_status = #{saleDepositStatus,jdbcType=INTEGER},
+      sale_commission = #{saleCommission,jdbcType=DECIMAL},
+      buy_commission = #{buyCommission,jdbcType=DECIMAL},
+      default_status = #{defaultStatus,jdbcType=INTEGER},
+      penalty_money = #{penaltyMoney,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+	
+	<!-- ==S insertOrder -->
+	<insert id="insertOrder" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.wupao.vipwss.pojo.UseOrder">
+		insert into use_order (id, odid, wxmp_id,
+		buy_uid,
+		status, money,
+		insert_time, hand_money, sale_hand_money,
+		sale_money,
+		is_deposit, deposit,
+		deposit_time, deposit_day, pay_time,
+		update_time,
+		deal_time, is_del
+		)
+		values (#{id,jdbcType=INTEGER},
+		#{odid,jdbcType=VARCHAR},
+		#{wxmpId,jdbcType=INTEGER},
+		#{buyUid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
+		#{money,jdbcType=DECIMAL},
+		#{insertTime,jdbcType=TIMESTAMP},
+		#{handMoney,jdbcType=DECIMAL},
+		#{saleHandMoney,jdbcType=DECIMAL},
+		#{saleMoney,jdbcType=DECIMAL}, #{isDeposit,jdbcType=INTEGER},
+		#{deposit,jdbcType=DECIMAL},
+		#{depositTime,jdbcType=TIMESTAMP},
+		#{depositDay,jdbcType=INTEGER},
+		#{payTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{dealTime,jdbcType=TIMESTAMP},
+		#{isDel,jdbcType=BIT}
+		)
+	</insert>
+	<!-- ==E insertOrder -->
+	<!-- ==S findByUidAndWid -->
+	<select id="findByUidAndWid" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from use_order
+		where
+		buy_uid = #{uid}
+		and wxmp_id=#{wid}
+	</select>
+	<!-- ==E findByUidAndWid -->
+	<select id="findByWidAndStatus" resultType="com.wupao.vipwss.pojo.UseOrder">
+		select
+		<include refid="Base_Column_List" />
+		from use_order
+		where
+		status = #{status}
+		and wxmp_id=#{wid}
+	</select>
+	<select id="getAllNoPayWxmpOrder" resultType="com.wupao.vipwss.pojo.UseOrder">
+		select
+		<include refid="Base_Column_List" />
+		from use_order
+		where
+		status = 1
+	</select>
+	<!-- ==S getOrders -->
+	<select id="getOrders" resultType="com.wupao.vipwss.entity.OrderDTO">
+		select
+		u.id,
+		u.odid,
+		u.wxmp_id wxmpId,
+		u.buy_uid buyUid,
+		u.status,
+		u.money,
+		u.insert_time insertTime,
+		u.hand_money handMoney,
+		u.is_deposit
+		isDeposit,
+		u.deposit,
+		w.wxmp_name
+		wxmpName,
+		w.fans,
+		w.top_uv,
+		wt.wtype_name,
+		w.diy_wxmptitle diyWxmptitle
+		from use_order u
+		LEFT
+		JOIN wxmp w ON u.wxmp_id=w.id
+		LEFT JOIN wxmp_type wt on w.wtype_id=wt.id
+		where
+		u.buy_uid = #{uid,jdbcType=INTEGER}
+		<if test="status!=null">
+			and u.status=#{status}
+		</if>
+		order by u.insert_time DESC
+	</select>
+	<!-- ==E getOrders -->
+	<!-- ==S getWxmpOrder -->
+	<select id="getWxmpOrder" resultType="com.wupao.vipwss.entity.WxmpOrderDTO">
+		select
+		u.id,
+		u.odid,
+		u.buy_uid userId,
+		w.wxmp_name wxmpName,
+		w.status,
+		w.wprice,
+		u.insert_time
+		orderTime,
+		u.hand_money handMoney,
+		u.money
+		money,
+		u.is_deposit
+		isdeposit,
+		u.deposit,
+		w.fans,
+		w.top_uv,
+		wt.wtype_name wtypeName,
+		w.diy_wxmptitle diyWxmptitle
+		from use_order u
+		LEFT
+		JOIN wxmp w ON
+		u.wxmp_id=w.id
+		LEFT JOIN wxmp_type wt ON
+		w.wtype_id=wt.id
+		where
+		w.status=#{status} and w.is_del=0 and w.is_line=1 and
+		u.status=#{orderStatus} and
+		u.id = #{oid}
+	</select>
+	<!-- ==E getWxmpOrder -->
+	<!-- ==S selectWaitPayOrder -->
+	<select id="selectWaitPayOrder" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from use_order
+		where
+		id = #{oid}
+		and status=1 and is_del=0
+	</select>
+	<!-- ==E selectWaitPayOrder -->
+	<!-- ==S updateOrderStatus 付全款或补余款 -->
+	<update id="updateOrderStatus">
+		update use_order
+		set status = #{status},
+		pay_time=#{date},
+		update_time=#{date}
+		where id =#{oid}
+	</update>
+	<!-- ==E updateOrderStatus -->
+	<!-- ==S updateOrderDeposit 支付订金更新数据 -->
+	<update id="updateOrderDeposit">
+		update use_order
+		set is_deposit = 1,
+		deposit=#{money},
+		deposit_time=#{date},
+		deposit_day=#{depositDay}
+		where id = #{oid}
+	</update>
+	<!-- ==E updateOrderDeposit -->
+	<!-- ==S confirmGoods 确认收货=交易完成 -->
+	<update id="confirmGoods">
+		update use_order
+		set status = #{status},
+		deal_time=#{date},
+		update_time=#{date},
+		sale_money=#{saleMoney}
+		where id =
+		#{oid}
+	</update>
+	<!-- ==E confirmGoods -->
+	<!-- ==S selectStatusOrder -->
+	<select id="selectStatusOrder" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from use_order
+		where
+		id = #{oid}
+		and status=#{status} and is_del=0
+	</select>
+	<!-- ==E selectStatusOrder -->
+	<!-- ==S findNoUploadUseOrder -->
+	<select id="findNoUploadUseOrder" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from use_order
+		where
+		is_del=0 and id=#{orderId}
+		and status = 2
+	</select>
+	<!-- ==E findNoUploadUseOrder -->
+	<!-- ==S updateStatusAndTime -->
+	<update id="updateStatusAndTime">
+		update use_order
+		set status = #{status},
+		update_time=#{date}
+		where id =#{orderId} and status=2 and is_del=0
+	</update>
+	<!-- ==E updateStatusAndTime -->
+	<!-- ==S updateContract 上传合同 -->
+	<!-- <update id="updateContract"> update use_order set is_upload = 1, contract=#{contractImg}, 
+		contract_time=#{date}, update_time=#{date} where id = #{orderId} and status=2 
+		and is_del=0 and is_upload=0 </update> -->
+	<!-- ==E updateContract -->
+
+	<!-- ==S getOrderDetail -->
+	<select id="getOrderDetail" resultType="com.wupao.vipwss.entity.WxmpOrderDTO">
+		select
+		u.id,
+		u.odid,
+		u.buy_uid userId,
+		w.wxmp_name wxmpName,
+		w.status,
+		w.wprice,
+		u.insert_time
+		orderTime,
+		u.hand_money handMoney,
+		u.money
+		money,
+		u.is_deposit
+		isdeposit,
+		u.deposit,
+		w.fans,
+		w.top_uv,
+		wt.wtype_name wtypeName,
+		w.diy_wxmptitle diyWxmptitle
+		from use_order u
+		LEFT
+		JOIN wxmp w ON
+		u.wxmp_id=w.id
+		LEFT JOIN wxmp_type wt
+		on w.wtype_id=wt.id
+		where
+		w.is_del=0 and w.is_line=1 and w.status!=0 and
+		u.id =
+		#{oid}
+	</select>
+	<!-- ==E getOrderDetail -->
+	
+	<select id="findUserBuyNum" resultType="java.lang.Integer">
+	  SELECT COUNT(id) from use_order WHERE buy_uid=#{uid} and status=4
+	</select>
+</mapper>

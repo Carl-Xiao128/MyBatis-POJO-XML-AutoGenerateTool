@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weiss.admin.mapper.OrderBusinessMapper" >
+  <resultMap id="BaseResultMap" type="com.weiss.admin.pojo.OrderBusiness" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_num" property="orderNum" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="wmpid" property="wmpid" jdbcType="VARCHAR" />
+    <result column="order_money" property="orderMoney" jdbcType="DECIMAL" />
+    <result column="order_income" property="orderIncome" jdbcType="DECIMAL" />
+    <result column="wxmp_name" property="wxmpName" jdbcType="VARCHAR" />
+    <result column="wxmp_num" property="wxmpNum" jdbcType="VARCHAR" />
+    <result column="buy_user_name" property="buyUserName" jdbcType="VARCHAR" />
+    <result column="sale_user_name" property="saleUserName" jdbcType="VARCHAR" />
+    <result column="sale_man_id" property="saleManId" jdbcType="BIGINT" />
+    <result column="amd_id" property="amdId" jdbcType="BIGINT" />
+    <result column="sale_income" property="saleIncome" jdbcType="DECIMAL" />
+    <result column="amd_income" property="amdIncome" jdbcType="DECIMAL" />
+    <result column="transaction_type" property="transactionType" jdbcType="INTEGER" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+    <result column="insert_user_id" property="insertUserId" jdbcType="BIGINT" />
+    <result column="examine_status" property="examineStatus" jdbcType="INTEGER" />
+    <result column="final_examine_status" property="finalExamineStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.weiss.admin.pojo.OrderBusiness" extends="BaseResultMap" >
+    <result column="order_remark" property="orderRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_num, order_type, wmpid, order_money, order_income, wxmp_name, wxmp_num, 
+    buy_user_name, sale_user_name, sale_man_id, amd_id, sale_income, amd_income, transaction_type, 
+    pay_type, order_status, update_time, insert_time, is_deleted, insert_user_id, examine_status, 
+    final_examine_status
+  </sql>
+  <sql id="Blob_Column_List" >
+    order_remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from order_business
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from order_business
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.weiss.admin.pojo.OrderBusiness" >
+    insert into order_business (id, order_num, order_type, 
+      wmpid, order_money, order_income, 
+      wxmp_name, wxmp_num, buy_user_name, 
+      sale_user_name, sale_man_id, amd_id, 
+      sale_income, amd_income, transaction_type, 
+      pay_type, order_status, update_time, 
+      insert_time, is_deleted, insert_user_id, 
+      examine_status, final_examine_status, order_remark
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderNum,jdbcType=VARCHAR}, #{orderType,jdbcType=INTEGER}, 
+      #{wmpid,jdbcType=VARCHAR}, #{orderMoney,jdbcType=DECIMAL}, #{orderIncome,jdbcType=DECIMAL}, 
+      #{wxmpName,jdbcType=VARCHAR}, #{wxmpNum,jdbcType=VARCHAR}, #{buyUserName,jdbcType=VARCHAR}, 
+      #{saleUserName,jdbcType=VARCHAR}, #{saleManId,jdbcType=BIGINT}, #{amdId,jdbcType=BIGINT}, 
+      #{saleIncome,jdbcType=DECIMAL}, #{amdIncome,jdbcType=DECIMAL}, #{transactionType,jdbcType=INTEGER}, 
+      #{payType,jdbcType=INTEGER}, #{orderStatus,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{insertTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=INTEGER}, #{insertUserId,jdbcType=BIGINT}, 
+      #{examineStatus,jdbcType=INTEGER}, #{finalExamineStatus,jdbcType=INTEGER}, #{orderRemark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weiss.admin.pojo.OrderBusiness" >
+    insert into order_business
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNum != null" >
+        order_num,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="wmpid != null" >
+        wmpid,
+      </if>
+      <if test="orderMoney != null" >
+        order_money,
+      </if>
+      <if test="orderIncome != null" >
+        order_income,
+      </if>
+      <if test="wxmpName != null" >
+        wxmp_name,
+      </if>
+      <if test="wxmpNum != null" >
+        wxmp_num,
+      </if>
+      <if test="buyUserName != null" >
+        buy_user_name,
+      </if>
+      <if test="saleUserName != null" >
+        sale_user_name,
+      </if>
+      <if test="saleManId != null" >
+        sale_man_id,
+      </if>
+      <if test="amdId != null" >
+        amd_id,
+      </if>
+      <if test="saleIncome != null" >
+        sale_income,
+      </if>
+      <if test="amdIncome != null" >
+        amd_income,
+      </if>
+      <if test="transactionType != null" >
+        transaction_type,
+      </if>
+      <if test="payType != null" >
+        pay_type,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="insertUserId != null" >
+        insert_user_id,
+      </if>
+      <if test="examineStatus != null" >
+        examine_status,
+      </if>
+      <if test="finalExamineStatus != null" >
+        final_examine_status,
+      </if>
+      <if test="orderRemark != null" >
+        order_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNum != null" >
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="wmpid != null" >
+        #{wmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMoney != null" >
+        #{orderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="orderIncome != null" >
+        #{orderIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="wxmpName != null" >
+        #{wxmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="wxmpNum != null" >
+        #{wxmpNum,jdbcType=VARCHAR},
+      </if>
+      <if test="buyUserName != null" >
+        #{buyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="saleUserName != null" >
+        #{saleUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="saleManId != null" >
+        #{saleManId,jdbcType=BIGINT},
+      </if>
+      <if test="amdId != null" >
+        #{amdId,jdbcType=BIGINT},
+      </if>
+      <if test="saleIncome != null" >
+        #{saleIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="amdIncome != null" >
+        #{amdIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="transactionType != null" >
+        #{transactionType,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="insertUserId != null" >
+        #{insertUserId,jdbcType=BIGINT},
+      </if>
+      <if test="examineStatus != null" >
+        #{examineStatus,jdbcType=INTEGER},
+      </if>
+      <if test="finalExamineStatus != null" >
+        #{finalExamineStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderRemark != null" >
+        #{orderRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weiss.admin.pojo.OrderBusiness" >
+    update order_business
+    <set >
+      <if test="orderNum != null" >
+        order_num = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="wmpid != null" >
+        wmpid = #{wmpid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMoney != null" >
+        order_money = #{orderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="orderIncome != null" >
+        order_income = #{orderIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="wxmpName != null" >
+        wxmp_name = #{wxmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="wxmpNum != null" >
+        wxmp_num = #{wxmpNum,jdbcType=VARCHAR},
+      </if>
+      <if test="buyUserName != null" >
+        buy_user_name = #{buyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="saleUserName != null" >
+        sale_user_name = #{saleUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="saleManId != null" >
+        sale_man_id = #{saleManId,jdbcType=BIGINT},
+      </if>
+      <if test="amdId != null" >
+        amd_id = #{amdId,jdbcType=BIGINT},
+      </if>
+      <if test="saleIncome != null" >
+        sale_income = #{saleIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="amdIncome != null" >
+        amd_income = #{amdIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="transactionType != null" >
+        transaction_type = #{transactionType,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="insertUserId != null" >
+        insert_user_id = #{insertUserId,jdbcType=BIGINT},
+      </if>
+      <if test="examineStatus != null" >
+        examine_status = #{examineStatus,jdbcType=INTEGER},
+      </if>
+      <if test="finalExamineStatus != null" >
+        final_examine_status = #{finalExamineStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderRemark != null" >
+        order_remark = #{orderRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.weiss.admin.pojo.OrderBusiness" >
+    update order_business
+    set order_num = #{orderNum,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=INTEGER},
+      wmpid = #{wmpid,jdbcType=VARCHAR},
+      order_money = #{orderMoney,jdbcType=DECIMAL},
+      order_income = #{orderIncome,jdbcType=DECIMAL},
+      wxmp_name = #{wxmpName,jdbcType=VARCHAR},
+      wxmp_num = #{wxmpNum,jdbcType=VARCHAR},
+      buy_user_name = #{buyUserName,jdbcType=VARCHAR},
+      sale_user_name = #{saleUserName,jdbcType=VARCHAR},
+      sale_man_id = #{saleManId,jdbcType=BIGINT},
+      amd_id = #{amdId,jdbcType=BIGINT},
+      sale_income = #{saleIncome,jdbcType=DECIMAL},
+      amd_income = #{amdIncome,jdbcType=DECIMAL},
+      transaction_type = #{transactionType,jdbcType=INTEGER},
+      pay_type = #{payType,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
+      insert_user_id = #{insertUserId,jdbcType=BIGINT},
+      examine_status = #{examineStatus,jdbcType=INTEGER},
+      final_examine_status = #{finalExamineStatus,jdbcType=INTEGER},
+      order_remark = #{orderRemark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weiss.admin.pojo.OrderBusiness" >
+    update order_business
+    set order_num = #{orderNum,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=INTEGER},
+      wmpid = #{wmpid,jdbcType=VARCHAR},
+      order_money = #{orderMoney,jdbcType=DECIMAL},
+      order_income = #{orderIncome,jdbcType=DECIMAL},
+      wxmp_name = #{wxmpName,jdbcType=VARCHAR},
+      wxmp_num = #{wxmpNum,jdbcType=VARCHAR},
+      buy_user_name = #{buyUserName,jdbcType=VARCHAR},
+      sale_user_name = #{saleUserName,jdbcType=VARCHAR},
+      sale_man_id = #{saleManId,jdbcType=BIGINT},
+      amd_id = #{amdId,jdbcType=BIGINT},
+      sale_income = #{saleIncome,jdbcType=DECIMAL},
+      amd_income = #{amdIncome,jdbcType=DECIMAL},
+      transaction_type = #{transactionType,jdbcType=INTEGER},
+      pay_type = #{payType,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=INTEGER},
+      insert_user_id = #{insertUserId,jdbcType=BIGINT},
+      examine_status = #{examineStatus,jdbcType=INTEGER},
+      final_examine_status = #{finalExamineStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

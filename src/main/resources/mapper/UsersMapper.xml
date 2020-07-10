@@ -1,0 +1,1220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyd.channel.dao.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.lyd.channel.pojo.Users">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="loginName" jdbcType="VARCHAR" property="loginname" />
+    <result column="loginPwd" jdbcType="VARCHAR" property="loginpwd" />
+    <result column="trueName" jdbcType="VARCHAR" property="truename" />
+    <result column="uemail" jdbcType="VARCHAR" property="uemail" />
+    <result column="usex" jdbcType="VARCHAR" property="usex" />
+    <result column="ubirthday" jdbcType="VARCHAR" property="ubirthday" />
+    <result column="registDate" jdbcType="TIMESTAMP" property="registdate" />
+    <result column="registIP" jdbcType="VARCHAR" property="registip" />
+    <result column="lastLoginDate" jdbcType="TIMESTAMP" property="lastlogindate" />
+    <result column="firstlogin" jdbcType="BIT" property="firstlogin" />
+    <result column="daixiaoflag" jdbcType="BIT" property="daixiaoflag" />
+    <result column="webtype2" jdbcType="BIT" property="webtype2" />
+    <result column="webtype3" jdbcType="BIT" property="webtype3" />
+    <result column="pwdquestion" jdbcType="VARCHAR" property="pwdquestion" />
+    <result column="pwdanswer" jdbcType="VARCHAR" property="pwdanswer" />
+    <result column="umobile" jdbcType="VARCHAR" property="umobile" />
+    <result column="uqq" jdbcType="VARCHAR" property="uqq" />
+    <result column="tjperson" jdbcType="VARCHAR" property="tjperson" />
+    <result column="pathcheck" jdbcType="BIT" property="pathcheck" />
+    <result column="islock" jdbcType="BIT" property="islock" />
+    <result column="userlevel" jdbcType="BIT" property="userlevel" />
+    <result column="uidnum" jdbcType="VARCHAR" property="uidnum" />
+    <result column="payemail" jdbcType="VARCHAR" property="payemail" />
+    <result column="payPwd" jdbcType="VARCHAR" property="paypwd" />
+    <result column="isfrom" jdbcType="TINYINT" property="isfrom" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="phonecheck" jdbcType="TINYINT" property="phonecheck" />
+    <result column="shopsee" jdbcType="TINYINT" property="shopsee" />
+    <result column="chouTimes" jdbcType="SMALLINT" property="choutimes" />
+    <result column="bzjcheck" jdbcType="TINYINT" property="bzjcheck" />
+    <result column="emailcheck" jdbcType="TINYINT" property="emailcheck" />
+    <result column="pstate" jdbcType="TINYINT" property="pstate" />
+    <result column="zmoney" jdbcType="DECIMAL" property="zmoney" />
+    <result column="jsmoney" jdbcType="DECIMAL" property="jsmoney" />
+    <result column="jingyan" jdbcType="BIGINT" property="jingyan" />
+    <result column="mgpwd" jdbcType="TINYINT" property="mgpwd" />
+    <result column="defpwd" jdbcType="VARCHAR" property="defpwd" />
+    <result column="nickName" jdbcType="VARCHAR" property="nickname" />
+    <result column="uwangwang" jdbcType="VARCHAR" property="uwangwang" />
+    <result column="picUrl" jdbcType="VARCHAR" property="picurl" />
+    <result column="weixin" jdbcType="VARCHAR" property="weixin" />
+    <result column="secret_key" jdbcType="VARCHAR" property="secretKey" />
+    <result column="joinyy" jdbcType="TINYINT" property="joinyy" />
+    <result column="stdgo" jdbcType="TINYINT" property="stdgo" />
+    <result column="sitemk" jdbcType="SMALLINT" property="sitemk" />
+    <result column="sdTjman" jdbcType="VARCHAR" property="sdtjman" />
+    <result column="lastLogIp" jdbcType="VARCHAR" property="lastlogip" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, loginName, loginPwd, trueName, uemail, usex, ubirthday, registDate, registIP, 
+    lastLoginDate, firstlogin, daixiaoflag, webtype2, webtype3, pwdquestion, pwdanswer, 
+    umobile, uqq, tjperson, pathcheck, islock, userlevel, uidnum, payemail, payPwd, isfrom, 
+    openid, phonecheck, shopsee, chouTimes, bzjcheck, emailcheck, pstate, zmoney, jsmoney, 
+    jingyan, mgpwd, defpwd, nickName, uwangwang, picUrl, weixin, secret_key, joinyy, 
+    stdgo, sitemk, sdTjman, lastLogIp, userName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from users
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lyd.channel.pojo.Users">
+    insert into users (Id, loginName, loginPwd, 
+      trueName, uemail, usex, 
+      ubirthday, registDate, registIP, 
+      lastLoginDate, firstlogin, daixiaoflag, 
+      webtype2, webtype3, pwdquestion, 
+      pwdanswer, umobile, uqq, 
+      tjperson, pathcheck, islock, 
+      userlevel, uidnum, payemail, 
+      payPwd, isfrom, openid, 
+      phonecheck, shopsee, chouTimes, 
+      bzjcheck, emailcheck, pstate, 
+      zmoney, jsmoney, jingyan, 
+      mgpwd, defpwd, nickName, 
+      uwangwang, picUrl, weixin, 
+      secret_key, joinyy, stdgo, 
+      sitemk, sdTjman, lastLogIp, 
+      userName)
+    values (#{id,jdbcType=INTEGER}, #{loginname,jdbcType=VARCHAR}, #{loginpwd,jdbcType=VARCHAR}, 
+      #{truename,jdbcType=VARCHAR}, #{uemail,jdbcType=VARCHAR}, #{usex,jdbcType=VARCHAR}, 
+      #{ubirthday,jdbcType=VARCHAR}, #{registdate,jdbcType=TIMESTAMP}, #{registip,jdbcType=VARCHAR}, 
+      #{lastlogindate,jdbcType=TIMESTAMP}, #{firstlogin,jdbcType=BIT}, #{daixiaoflag,jdbcType=BIT}, 
+      #{webtype2,jdbcType=BIT}, #{webtype3,jdbcType=BIT}, #{pwdquestion,jdbcType=VARCHAR}, 
+      #{pwdanswer,jdbcType=VARCHAR}, #{umobile,jdbcType=VARCHAR}, #{uqq,jdbcType=VARCHAR}, 
+      #{tjperson,jdbcType=VARCHAR}, #{pathcheck,jdbcType=BIT}, #{islock,jdbcType=BIT}, 
+      #{userlevel,jdbcType=BIT}, #{uidnum,jdbcType=VARCHAR}, #{payemail,jdbcType=VARCHAR}, 
+      #{paypwd,jdbcType=VARCHAR}, #{isfrom,jdbcType=TINYINT}, #{openid,jdbcType=VARCHAR}, 
+      #{phonecheck,jdbcType=TINYINT}, #{shopsee,jdbcType=TINYINT}, #{choutimes,jdbcType=SMALLINT}, 
+      #{bzjcheck,jdbcType=TINYINT}, #{emailcheck,jdbcType=TINYINT}, #{pstate,jdbcType=TINYINT}, 
+      #{zmoney,jdbcType=DECIMAL}, #{jsmoney,jdbcType=DECIMAL}, #{jingyan,jdbcType=BIGINT}, 
+      #{mgpwd,jdbcType=TINYINT}, #{defpwd,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{uwangwang,jdbcType=VARCHAR}, #{picurl,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, 
+      #{secretKey,jdbcType=VARCHAR}, #{joinyy,jdbcType=TINYINT}, #{stdgo,jdbcType=TINYINT}, 
+      #{sitemk,jdbcType=SMALLINT}, #{sdtjman,jdbcType=VARCHAR}, #{lastlogip,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyd.channel.pojo.Users">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="loginname != null">
+        loginName,
+      </if>
+      <if test="loginpwd != null">
+        loginPwd,
+      </if>
+      <if test="truename != null">
+        trueName,
+      </if>
+      <if test="uemail != null">
+        uemail,
+      </if>
+      <if test="usex != null">
+        usex,
+      </if>
+      <if test="ubirthday != null">
+        ubirthday,
+      </if>
+      <if test="registdate != null">
+        registDate,
+      </if>
+      <if test="registip != null">
+        registIP,
+      </if>
+      <if test="lastlogindate != null">
+        lastLoginDate,
+      </if>
+      <if test="firstlogin != null">
+        firstlogin,
+      </if>
+      <if test="daixiaoflag != null">
+        daixiaoflag,
+      </if>
+      <if test="webtype2 != null">
+        webtype2,
+      </if>
+      <if test="webtype3 != null">
+        webtype3,
+      </if>
+      <if test="pwdquestion != null">
+        pwdquestion,
+      </if>
+      <if test="pwdanswer != null">
+        pwdanswer,
+      </if>
+      <if test="umobile != null">
+        umobile,
+      </if>
+      <if test="uqq != null">
+        uqq,
+      </if>
+      <if test="tjperson != null">
+        tjperson,
+      </if>
+      <if test="pathcheck != null">
+        pathcheck,
+      </if>
+      <if test="islock != null">
+        islock,
+      </if>
+      <if test="userlevel != null">
+        userlevel,
+      </if>
+      <if test="uidnum != null">
+        uidnum,
+      </if>
+      <if test="payemail != null">
+        payemail,
+      </if>
+      <if test="paypwd != null">
+        payPwd,
+      </if>
+      <if test="isfrom != null">
+        isfrom,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="phonecheck != null">
+        phonecheck,
+      </if>
+      <if test="shopsee != null">
+        shopsee,
+      </if>
+      <if test="choutimes != null">
+        chouTimes,
+      </if>
+      <if test="bzjcheck != null">
+        bzjcheck,
+      </if>
+      <if test="emailcheck != null">
+        emailcheck,
+      </if>
+      <if test="pstate != null">
+        pstate,
+      </if>
+      <if test="zmoney != null">
+        zmoney,
+      </if>
+      <if test="jsmoney != null">
+        jsmoney,
+      </if>
+      <if test="jingyan != null">
+        jingyan,
+      </if>
+      <if test="mgpwd != null">
+        mgpwd,
+      </if>
+      <if test="defpwd != null">
+        defpwd,
+      </if>
+      <if test="nickname != null">
+        nickName,
+      </if>
+      <if test="uwangwang != null">
+        uwangwang,
+      </if>
+      <if test="picurl != null">
+        picUrl,
+      </if>
+      <if test="weixin != null">
+        weixin,
+      </if>
+      <if test="secretKey != null">
+        secret_key,
+      </if>
+      <if test="joinyy != null">
+        joinyy,
+      </if>
+      <if test="stdgo != null">
+        stdgo,
+      </if>
+      <if test="sitemk != null">
+        sitemk,
+      </if>
+      <if test="sdtjman != null">
+        sdTjman,
+      </if>
+      <if test="lastlogip != null">
+        lastLogIp,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="loginname != null">
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginpwd != null">
+        #{loginpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null">
+        #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="usex != null">
+        #{usex,jdbcType=VARCHAR},
+      </if>
+      <if test="ubirthday != null">
+        #{ubirthday,jdbcType=VARCHAR},
+      </if>
+      <if test="registdate != null">
+        #{registdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registip != null">
+        #{registip,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogindate != null">
+        #{lastlogindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstlogin != null">
+        #{firstlogin,jdbcType=BIT},
+      </if>
+      <if test="daixiaoflag != null">
+        #{daixiaoflag,jdbcType=BIT},
+      </if>
+      <if test="webtype2 != null">
+        #{webtype2,jdbcType=BIT},
+      </if>
+      <if test="webtype3 != null">
+        #{webtype3,jdbcType=BIT},
+      </if>
+      <if test="pwdquestion != null">
+        #{pwdquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdanswer != null">
+        #{pwdanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="umobile != null">
+        #{umobile,jdbcType=VARCHAR},
+      </if>
+      <if test="uqq != null">
+        #{uqq,jdbcType=VARCHAR},
+      </if>
+      <if test="tjperson != null">
+        #{tjperson,jdbcType=VARCHAR},
+      </if>
+      <if test="pathcheck != null">
+        #{pathcheck,jdbcType=BIT},
+      </if>
+      <if test="islock != null">
+        #{islock,jdbcType=BIT},
+      </if>
+      <if test="userlevel != null">
+        #{userlevel,jdbcType=BIT},
+      </if>
+      <if test="uidnum != null">
+        #{uidnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payemail != null">
+        #{payemail,jdbcType=VARCHAR},
+      </if>
+      <if test="paypwd != null">
+        #{paypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="isfrom != null">
+        #{isfrom,jdbcType=TINYINT},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="phonecheck != null">
+        #{phonecheck,jdbcType=TINYINT},
+      </if>
+      <if test="shopsee != null">
+        #{shopsee,jdbcType=TINYINT},
+      </if>
+      <if test="choutimes != null">
+        #{choutimes,jdbcType=SMALLINT},
+      </if>
+      <if test="bzjcheck != null">
+        #{bzjcheck,jdbcType=TINYINT},
+      </if>
+      <if test="emailcheck != null">
+        #{emailcheck,jdbcType=TINYINT},
+      </if>
+      <if test="pstate != null">
+        #{pstate,jdbcType=TINYINT},
+      </if>
+      <if test="zmoney != null">
+        #{zmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jsmoney != null">
+        #{jsmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jingyan != null">
+        #{jingyan,jdbcType=BIGINT},
+      </if>
+      <if test="mgpwd != null">
+        #{mgpwd,jdbcType=TINYINT},
+      </if>
+      <if test="defpwd != null">
+        #{defpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uwangwang != null">
+        #{uwangwang,jdbcType=VARCHAR},
+      </if>
+      <if test="picurl != null">
+        #{picurl,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="secretKey != null">
+        #{secretKey,jdbcType=VARCHAR},
+      </if>
+      <if test="joinyy != null">
+        #{joinyy,jdbcType=TINYINT},
+      </if>
+      <if test="stdgo != null">
+        #{stdgo,jdbcType=TINYINT},
+      </if>
+      <if test="sitemk != null">
+        #{sitemk,jdbcType=SMALLINT},
+      </if>
+      <if test="sdtjman != null">
+        #{sdtjman,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogip != null">
+        #{lastlogip,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyd.channel.pojo.Users">
+    update users
+    <set>
+      <if test="loginname != null">
+        loginName = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginpwd != null">
+        loginPwd = #{loginpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        trueName = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null">
+        uemail = #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="usex != null">
+        usex = #{usex,jdbcType=VARCHAR},
+      </if>
+      <if test="ubirthday != null">
+        ubirthday = #{ubirthday,jdbcType=VARCHAR},
+      </if>
+      <if test="registdate != null">
+        registDate = #{registdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registip != null">
+        registIP = #{registip,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogindate != null">
+        lastLoginDate = #{lastlogindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstlogin != null">
+        firstlogin = #{firstlogin,jdbcType=BIT},
+      </if>
+      <if test="daixiaoflag != null">
+        daixiaoflag = #{daixiaoflag,jdbcType=BIT},
+      </if>
+      <if test="webtype2 != null">
+        webtype2 = #{webtype2,jdbcType=BIT},
+      </if>
+      <if test="webtype3 != null">
+        webtype3 = #{webtype3,jdbcType=BIT},
+      </if>
+      <if test="pwdquestion != null">
+        pwdquestion = #{pwdquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdanswer != null">
+        pwdanswer = #{pwdanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="umobile != null">
+        umobile = #{umobile,jdbcType=VARCHAR},
+      </if>
+      <if test="uqq != null">
+        uqq = #{uqq,jdbcType=VARCHAR},
+      </if>
+      <if test="tjperson != null">
+        tjperson = #{tjperson,jdbcType=VARCHAR},
+      </if>
+      <if test="pathcheck != null">
+        pathcheck = #{pathcheck,jdbcType=BIT},
+      </if>
+      <if test="islock != null">
+        islock = #{islock,jdbcType=BIT},
+      </if>
+      <if test="userlevel != null">
+        userlevel = #{userlevel,jdbcType=BIT},
+      </if>
+      <if test="uidnum != null">
+        uidnum = #{uidnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payemail != null">
+        payemail = #{payemail,jdbcType=VARCHAR},
+      </if>
+      <if test="paypwd != null">
+        payPwd = #{paypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="isfrom != null">
+        isfrom = #{isfrom,jdbcType=TINYINT},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="phonecheck != null">
+        phonecheck = #{phonecheck,jdbcType=TINYINT},
+      </if>
+      <if test="shopsee != null">
+        shopsee = #{shopsee,jdbcType=TINYINT},
+      </if>
+      <if test="choutimes != null">
+        chouTimes = #{choutimes,jdbcType=SMALLINT},
+      </if>
+      <if test="bzjcheck != null">
+        bzjcheck = #{bzjcheck,jdbcType=TINYINT},
+      </if>
+      <if test="emailcheck != null">
+        emailcheck = #{emailcheck,jdbcType=TINYINT},
+      </if>
+      <if test="pstate != null">
+        pstate = #{pstate,jdbcType=TINYINT},
+      </if>
+      <if test="zmoney != null">
+        zmoney = #{zmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jsmoney != null">
+        jsmoney = #{jsmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jingyan != null">
+        jingyan = #{jingyan,jdbcType=BIGINT},
+      </if>
+      <if test="mgpwd != null">
+        mgpwd = #{mgpwd,jdbcType=TINYINT},
+      </if>
+      <if test="defpwd != null">
+        defpwd = #{defpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickName = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uwangwang != null">
+        uwangwang = #{uwangwang,jdbcType=VARCHAR},
+      </if>
+      <if test="picurl != null">
+        picUrl = #{picurl,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="secretKey != null">
+        secret_key = #{secretKey,jdbcType=VARCHAR},
+      </if>
+      <if test="joinyy != null">
+        joinyy = #{joinyy,jdbcType=TINYINT},
+      </if>
+      <if test="stdgo != null">
+        stdgo = #{stdgo,jdbcType=TINYINT},
+      </if>
+      <if test="sitemk != null">
+        sitemk = #{sitemk,jdbcType=SMALLINT},
+      </if>
+      <if test="sdtjman != null">
+        sdTjman = #{sdtjman,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogip != null">
+        lastLogIp = #{lastlogip,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyd.channel.pojo.Users">
+    update users
+    set loginName = #{loginname,jdbcType=VARCHAR},
+      loginPwd = #{loginpwd,jdbcType=VARCHAR},
+      trueName = #{truename,jdbcType=VARCHAR},
+      uemail = #{uemail,jdbcType=VARCHAR},
+      usex = #{usex,jdbcType=VARCHAR},
+      ubirthday = #{ubirthday,jdbcType=VARCHAR},
+      registDate = #{registdate,jdbcType=TIMESTAMP},
+      registIP = #{registip,jdbcType=VARCHAR},
+      lastLoginDate = #{lastlogindate,jdbcType=TIMESTAMP},
+      firstlogin = #{firstlogin,jdbcType=BIT},
+      daixiaoflag = #{daixiaoflag,jdbcType=BIT},
+      webtype2 = #{webtype2,jdbcType=BIT},
+      webtype3 = #{webtype3,jdbcType=BIT},
+      pwdquestion = #{pwdquestion,jdbcType=VARCHAR},
+      pwdanswer = #{pwdanswer,jdbcType=VARCHAR},
+      umobile = #{umobile,jdbcType=VARCHAR},
+      uqq = #{uqq,jdbcType=VARCHAR},
+      tjperson = #{tjperson,jdbcType=VARCHAR},
+      pathcheck = #{pathcheck,jdbcType=BIT},
+      islock = #{islock,jdbcType=BIT},
+      userlevel = #{userlevel,jdbcType=BIT},
+      uidnum = #{uidnum,jdbcType=VARCHAR},
+      payemail = #{payemail,jdbcType=VARCHAR},
+      payPwd = #{paypwd,jdbcType=VARCHAR},
+      isfrom = #{isfrom,jdbcType=TINYINT},
+      openid = #{openid,jdbcType=VARCHAR},
+      phonecheck = #{phonecheck,jdbcType=TINYINT},
+      shopsee = #{shopsee,jdbcType=TINYINT},
+      chouTimes = #{choutimes,jdbcType=SMALLINT},
+      bzjcheck = #{bzjcheck,jdbcType=TINYINT},
+      emailcheck = #{emailcheck,jdbcType=TINYINT},
+      pstate = #{pstate,jdbcType=TINYINT},
+      zmoney = #{zmoney,jdbcType=DECIMAL},
+      jsmoney = #{jsmoney,jdbcType=DECIMAL},
+      jingyan = #{jingyan,jdbcType=BIGINT},
+      mgpwd = #{mgpwd,jdbcType=TINYINT},
+      defpwd = #{defpwd,jdbcType=VARCHAR},
+      nickName = #{nickname,jdbcType=VARCHAR},
+      uwangwang = #{uwangwang,jdbcType=VARCHAR},
+      picUrl = #{picurl,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      secret_key = #{secretKey,jdbcType=VARCHAR},
+      joinyy = #{joinyy,jdbcType=TINYINT},
+      stdgo = #{stdgo,jdbcType=TINYINT},
+      sitemk = #{sitemk,jdbcType=SMALLINT},
+      sdTjman = #{sdtjman,jdbcType=VARCHAR},
+      lastLogIp = #{lastlogip,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lyd.channel.pojo.Users">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="loginName" jdbcType="VARCHAR" property="loginname" />
+    <result column="loginPwd" jdbcType="VARCHAR" property="loginpwd" />
+    <result column="trueName" jdbcType="VARCHAR" property="truename" />
+    <result column="uemail" jdbcType="VARCHAR" property="uemail" />
+    <result column="usex" jdbcType="VARCHAR" property="usex" />
+    <result column="ubirthday" jdbcType="VARCHAR" property="ubirthday" />
+    <result column="registDate" jdbcType="TIMESTAMP" property="registdate" />
+    <result column="registIP" jdbcType="VARCHAR" property="registip" />
+    <result column="lastLoginDate" jdbcType="TIMESTAMP" property="lastlogindate" />
+    <result column="firstlogin" jdbcType="BIT" property="firstlogin" />
+    <result column="daixiaoflag" jdbcType="BIT" property="daixiaoflag" />
+    <result column="webtype2" jdbcType="BIT" property="webtype2" />
+    <result column="webtype3" jdbcType="BIT" property="webtype3" />
+    <result column="pwdquestion" jdbcType="VARCHAR" property="pwdquestion" />
+    <result column="pwdanswer" jdbcType="VARCHAR" property="pwdanswer" />
+    <result column="umobile" jdbcType="VARCHAR" property="umobile" />
+    <result column="uqq" jdbcType="VARCHAR" property="uqq" />
+    <result column="tjperson" jdbcType="VARCHAR" property="tjperson" />
+    <result column="pathcheck" jdbcType="BIT" property="pathcheck" />
+    <result column="islock" jdbcType="BIT" property="islock" />
+    <result column="userlevel" jdbcType="BIT" property="userlevel" />
+    <result column="uidnum" jdbcType="VARCHAR" property="uidnum" />
+    <result column="payemail" jdbcType="VARCHAR" property="payemail" />
+    <result column="payPwd" jdbcType="VARCHAR" property="paypwd" />
+    <result column="isfrom" jdbcType="TINYINT" property="isfrom" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="phonecheck" jdbcType="TINYINT" property="phonecheck" />
+    <result column="shopsee" jdbcType="TINYINT" property="shopsee" />
+    <result column="chouTimes" jdbcType="SMALLINT" property="choutimes" />
+    <result column="bzjcheck" jdbcType="TINYINT" property="bzjcheck" />
+    <result column="emailcheck" jdbcType="TINYINT" property="emailcheck" />
+    <result column="pstate" jdbcType="TINYINT" property="pstate" />
+    <result column="zmoney" jdbcType="DECIMAL" property="zmoney" />
+    <result column="jsmoney" jdbcType="DECIMAL" property="jsmoney" />
+    <result column="jingyan" jdbcType="BIGINT" property="jingyan" />
+    <result column="mgpwd" jdbcType="TINYINT" property="mgpwd" />
+    <result column="defpwd" jdbcType="VARCHAR" property="defpwd" />
+    <result column="nickName" jdbcType="VARCHAR" property="nickname" />
+    <result column="uwangwang" jdbcType="VARCHAR" property="uwangwang" />
+    <result column="picUrl" jdbcType="VARCHAR" property="picurl" />
+    <result column="weixin" jdbcType="VARCHAR" property="weixin" />
+    <result column="secret_key" jdbcType="VARCHAR" property="secretKey" />
+    <result column="joinyy" jdbcType="TINYINT" property="joinyy" />
+    <result column="stdgo" jdbcType="TINYINT" property="stdgo" />
+    <result column="sitemk" jdbcType="SMALLINT" property="sitemk" />
+    <result column="sdTjman" jdbcType="VARCHAR" property="sdtjman" />
+    <result column="lastLogIp" jdbcType="VARCHAR" property="lastlogip" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, loginName, loginPwd, trueName, uemail, usex, ubirthday, registDate, registIP, 
+    lastLoginDate, firstlogin, daixiaoflag, webtype2, webtype3, pwdquestion, pwdanswer, 
+    umobile, uqq, tjperson, pathcheck, islock, userlevel, uidnum, payemail, payPwd, isfrom, 
+    openid, phonecheck, shopsee, chouTimes, bzjcheck, emailcheck, pstate, zmoney, jsmoney, 
+    jingyan, mgpwd, defpwd, nickName, uwangwang, picUrl, weixin, secret_key, joinyy, 
+    stdgo, sitemk, sdTjman, lastLogIp, userName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from users
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lyd.channel.pojo.Users">
+    insert into users (Id, loginName, loginPwd, 
+      trueName, uemail, usex, 
+      ubirthday, registDate, registIP, 
+      lastLoginDate, firstlogin, daixiaoflag, 
+      webtype2, webtype3, pwdquestion, 
+      pwdanswer, umobile, uqq, 
+      tjperson, pathcheck, islock, 
+      userlevel, uidnum, payemail, 
+      payPwd, isfrom, openid, 
+      phonecheck, shopsee, chouTimes, 
+      bzjcheck, emailcheck, pstate, 
+      zmoney, jsmoney, jingyan, 
+      mgpwd, defpwd, nickName, 
+      uwangwang, picUrl, weixin, 
+      secret_key, joinyy, stdgo, 
+      sitemk, sdTjman, lastLogIp, 
+      userName)
+    values (#{id,jdbcType=INTEGER}, #{loginname,jdbcType=VARCHAR}, #{loginpwd,jdbcType=VARCHAR}, 
+      #{truename,jdbcType=VARCHAR}, #{uemail,jdbcType=VARCHAR}, #{usex,jdbcType=VARCHAR}, 
+      #{ubirthday,jdbcType=VARCHAR}, #{registdate,jdbcType=TIMESTAMP}, #{registip,jdbcType=VARCHAR}, 
+      #{lastlogindate,jdbcType=TIMESTAMP}, #{firstlogin,jdbcType=BIT}, #{daixiaoflag,jdbcType=BIT}, 
+      #{webtype2,jdbcType=BIT}, #{webtype3,jdbcType=BIT}, #{pwdquestion,jdbcType=VARCHAR}, 
+      #{pwdanswer,jdbcType=VARCHAR}, #{umobile,jdbcType=VARCHAR}, #{uqq,jdbcType=VARCHAR}, 
+      #{tjperson,jdbcType=VARCHAR}, #{pathcheck,jdbcType=BIT}, #{islock,jdbcType=BIT}, 
+      #{userlevel,jdbcType=BIT}, #{uidnum,jdbcType=VARCHAR}, #{payemail,jdbcType=VARCHAR}, 
+      #{paypwd,jdbcType=VARCHAR}, #{isfrom,jdbcType=TINYINT}, #{openid,jdbcType=VARCHAR}, 
+      #{phonecheck,jdbcType=TINYINT}, #{shopsee,jdbcType=TINYINT}, #{choutimes,jdbcType=SMALLINT}, 
+      #{bzjcheck,jdbcType=TINYINT}, #{emailcheck,jdbcType=TINYINT}, #{pstate,jdbcType=TINYINT}, 
+      #{zmoney,jdbcType=DECIMAL}, #{jsmoney,jdbcType=DECIMAL}, #{jingyan,jdbcType=BIGINT}, 
+      #{mgpwd,jdbcType=TINYINT}, #{defpwd,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{uwangwang,jdbcType=VARCHAR}, #{picurl,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, 
+      #{secretKey,jdbcType=VARCHAR}, #{joinyy,jdbcType=TINYINT}, #{stdgo,jdbcType=TINYINT}, 
+      #{sitemk,jdbcType=SMALLINT}, #{sdtjman,jdbcType=VARCHAR}, #{lastlogip,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyd.channel.pojo.Users">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="loginname != null">
+        loginName,
+      </if>
+      <if test="loginpwd != null">
+        loginPwd,
+      </if>
+      <if test="truename != null">
+        trueName,
+      </if>
+      <if test="uemail != null">
+        uemail,
+      </if>
+      <if test="usex != null">
+        usex,
+      </if>
+      <if test="ubirthday != null">
+        ubirthday,
+      </if>
+      <if test="registdate != null">
+        registDate,
+      </if>
+      <if test="registip != null">
+        registIP,
+      </if>
+      <if test="lastlogindate != null">
+        lastLoginDate,
+      </if>
+      <if test="firstlogin != null">
+        firstlogin,
+      </if>
+      <if test="daixiaoflag != null">
+        daixiaoflag,
+      </if>
+      <if test="webtype2 != null">
+        webtype2,
+      </if>
+      <if test="webtype3 != null">
+        webtype3,
+      </if>
+      <if test="pwdquestion != null">
+        pwdquestion,
+      </if>
+      <if test="pwdanswer != null">
+        pwdanswer,
+      </if>
+      <if test="umobile != null">
+        umobile,
+      </if>
+      <if test="uqq != null">
+        uqq,
+      </if>
+      <if test="tjperson != null">
+        tjperson,
+      </if>
+      <if test="pathcheck != null">
+        pathcheck,
+      </if>
+      <if test="islock != null">
+        islock,
+      </if>
+      <if test="userlevel != null">
+        userlevel,
+      </if>
+      <if test="uidnum != null">
+        uidnum,
+      </if>
+      <if test="payemail != null">
+        payemail,
+      </if>
+      <if test="paypwd != null">
+        payPwd,
+      </if>
+      <if test="isfrom != null">
+        isfrom,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="phonecheck != null">
+        phonecheck,
+      </if>
+      <if test="shopsee != null">
+        shopsee,
+      </if>
+      <if test="choutimes != null">
+        chouTimes,
+      </if>
+      <if test="bzjcheck != null">
+        bzjcheck,
+      </if>
+      <if test="emailcheck != null">
+        emailcheck,
+      </if>
+      <if test="pstate != null">
+        pstate,
+      </if>
+      <if test="zmoney != null">
+        zmoney,
+      </if>
+      <if test="jsmoney != null">
+        jsmoney,
+      </if>
+      <if test="jingyan != null">
+        jingyan,
+      </if>
+      <if test="mgpwd != null">
+        mgpwd,
+      </if>
+      <if test="defpwd != null">
+        defpwd,
+      </if>
+      <if test="nickname != null">
+        nickName,
+      </if>
+      <if test="uwangwang != null">
+        uwangwang,
+      </if>
+      <if test="picurl != null">
+        picUrl,
+      </if>
+      <if test="weixin != null">
+        weixin,
+      </if>
+      <if test="secretKey != null">
+        secret_key,
+      </if>
+      <if test="joinyy != null">
+        joinyy,
+      </if>
+      <if test="stdgo != null">
+        stdgo,
+      </if>
+      <if test="sitemk != null">
+        sitemk,
+      </if>
+      <if test="sdtjman != null">
+        sdTjman,
+      </if>
+      <if test="lastlogip != null">
+        lastLogIp,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="loginname != null">
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginpwd != null">
+        #{loginpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null">
+        #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="usex != null">
+        #{usex,jdbcType=VARCHAR},
+      </if>
+      <if test="ubirthday != null">
+        #{ubirthday,jdbcType=VARCHAR},
+      </if>
+      <if test="registdate != null">
+        #{registdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registip != null">
+        #{registip,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogindate != null">
+        #{lastlogindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstlogin != null">
+        #{firstlogin,jdbcType=BIT},
+      </if>
+      <if test="daixiaoflag != null">
+        #{daixiaoflag,jdbcType=BIT},
+      </if>
+      <if test="webtype2 != null">
+        #{webtype2,jdbcType=BIT},
+      </if>
+      <if test="webtype3 != null">
+        #{webtype3,jdbcType=BIT},
+      </if>
+      <if test="pwdquestion != null">
+        #{pwdquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdanswer != null">
+        #{pwdanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="umobile != null">
+        #{umobile,jdbcType=VARCHAR},
+      </if>
+      <if test="uqq != null">
+        #{uqq,jdbcType=VARCHAR},
+      </if>
+      <if test="tjperson != null">
+        #{tjperson,jdbcType=VARCHAR},
+      </if>
+      <if test="pathcheck != null">
+        #{pathcheck,jdbcType=BIT},
+      </if>
+      <if test="islock != null">
+        #{islock,jdbcType=BIT},
+      </if>
+      <if test="userlevel != null">
+        #{userlevel,jdbcType=BIT},
+      </if>
+      <if test="uidnum != null">
+        #{uidnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payemail != null">
+        #{payemail,jdbcType=VARCHAR},
+      </if>
+      <if test="paypwd != null">
+        #{paypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="isfrom != null">
+        #{isfrom,jdbcType=TINYINT},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="phonecheck != null">
+        #{phonecheck,jdbcType=TINYINT},
+      </if>
+      <if test="shopsee != null">
+        #{shopsee,jdbcType=TINYINT},
+      </if>
+      <if test="choutimes != null">
+        #{choutimes,jdbcType=SMALLINT},
+      </if>
+      <if test="bzjcheck != null">
+        #{bzjcheck,jdbcType=TINYINT},
+      </if>
+      <if test="emailcheck != null">
+        #{emailcheck,jdbcType=TINYINT},
+      </if>
+      <if test="pstate != null">
+        #{pstate,jdbcType=TINYINT},
+      </if>
+      <if test="zmoney != null">
+        #{zmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jsmoney != null">
+        #{jsmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jingyan != null">
+        #{jingyan,jdbcType=BIGINT},
+      </if>
+      <if test="mgpwd != null">
+        #{mgpwd,jdbcType=TINYINT},
+      </if>
+      <if test="defpwd != null">
+        #{defpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uwangwang != null">
+        #{uwangwang,jdbcType=VARCHAR},
+      </if>
+      <if test="picurl != null">
+        #{picurl,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="secretKey != null">
+        #{secretKey,jdbcType=VARCHAR},
+      </if>
+      <if test="joinyy != null">
+        #{joinyy,jdbcType=TINYINT},
+      </if>
+      <if test="stdgo != null">
+        #{stdgo,jdbcType=TINYINT},
+      </if>
+      <if test="sitemk != null">
+        #{sitemk,jdbcType=SMALLINT},
+      </if>
+      <if test="sdtjman != null">
+        #{sdtjman,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogip != null">
+        #{lastlogip,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyd.channel.pojo.Users">
+    update users
+    <set>
+      <if test="loginname != null">
+        loginName = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginpwd != null">
+        loginPwd = #{loginpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null">
+        trueName = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="uemail != null">
+        uemail = #{uemail,jdbcType=VARCHAR},
+      </if>
+      <if test="usex != null">
+        usex = #{usex,jdbcType=VARCHAR},
+      </if>
+      <if test="ubirthday != null">
+        ubirthday = #{ubirthday,jdbcType=VARCHAR},
+      </if>
+      <if test="registdate != null">
+        registDate = #{registdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registip != null">
+        registIP = #{registip,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogindate != null">
+        lastLoginDate = #{lastlogindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstlogin != null">
+        firstlogin = #{firstlogin,jdbcType=BIT},
+      </if>
+      <if test="daixiaoflag != null">
+        daixiaoflag = #{daixiaoflag,jdbcType=BIT},
+      </if>
+      <if test="webtype2 != null">
+        webtype2 = #{webtype2,jdbcType=BIT},
+      </if>
+      <if test="webtype3 != null">
+        webtype3 = #{webtype3,jdbcType=BIT},
+      </if>
+      <if test="pwdquestion != null">
+        pwdquestion = #{pwdquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdanswer != null">
+        pwdanswer = #{pwdanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="umobile != null">
+        umobile = #{umobile,jdbcType=VARCHAR},
+      </if>
+      <if test="uqq != null">
+        uqq = #{uqq,jdbcType=VARCHAR},
+      </if>
+      <if test="tjperson != null">
+        tjperson = #{tjperson,jdbcType=VARCHAR},
+      </if>
+      <if test="pathcheck != null">
+        pathcheck = #{pathcheck,jdbcType=BIT},
+      </if>
+      <if test="islock != null">
+        islock = #{islock,jdbcType=BIT},
+      </if>
+      <if test="userlevel != null">
+        userlevel = #{userlevel,jdbcType=BIT},
+      </if>
+      <if test="uidnum != null">
+        uidnum = #{uidnum,jdbcType=VARCHAR},
+      </if>
+      <if test="payemail != null">
+        payemail = #{payemail,jdbcType=VARCHAR},
+      </if>
+      <if test="paypwd != null">
+        payPwd = #{paypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="isfrom != null">
+        isfrom = #{isfrom,jdbcType=TINYINT},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="phonecheck != null">
+        phonecheck = #{phonecheck,jdbcType=TINYINT},
+      </if>
+      <if test="shopsee != null">
+        shopsee = #{shopsee,jdbcType=TINYINT},
+      </if>
+      <if test="choutimes != null">
+        chouTimes = #{choutimes,jdbcType=SMALLINT},
+      </if>
+      <if test="bzjcheck != null">
+        bzjcheck = #{bzjcheck,jdbcType=TINYINT},
+      </if>
+      <if test="emailcheck != null">
+        emailcheck = #{emailcheck,jdbcType=TINYINT},
+      </if>
+      <if test="pstate != null">
+        pstate = #{pstate,jdbcType=TINYINT},
+      </if>
+      <if test="zmoney != null">
+        zmoney = #{zmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jsmoney != null">
+        jsmoney = #{jsmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jingyan != null">
+        jingyan = #{jingyan,jdbcType=BIGINT},
+      </if>
+      <if test="mgpwd != null">
+        mgpwd = #{mgpwd,jdbcType=TINYINT},
+      </if>
+      <if test="defpwd != null">
+        defpwd = #{defpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickName = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uwangwang != null">
+        uwangwang = #{uwangwang,jdbcType=VARCHAR},
+      </if>
+      <if test="picurl != null">
+        picUrl = #{picurl,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="secretKey != null">
+        secret_key = #{secretKey,jdbcType=VARCHAR},
+      </if>
+      <if test="joinyy != null">
+        joinyy = #{joinyy,jdbcType=TINYINT},
+      </if>
+      <if test="stdgo != null">
+        stdgo = #{stdgo,jdbcType=TINYINT},
+      </if>
+      <if test="sitemk != null">
+        sitemk = #{sitemk,jdbcType=SMALLINT},
+      </if>
+      <if test="sdtjman != null">
+        sdTjman = #{sdtjman,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogip != null">
+        lastLogIp = #{lastlogip,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyd.channel.pojo.Users">
+    update users
+    set loginName = #{loginname,jdbcType=VARCHAR},
+      loginPwd = #{loginpwd,jdbcType=VARCHAR},
+      trueName = #{truename,jdbcType=VARCHAR},
+      uemail = #{uemail,jdbcType=VARCHAR},
+      usex = #{usex,jdbcType=VARCHAR},
+      ubirthday = #{ubirthday,jdbcType=VARCHAR},
+      registDate = #{registdate,jdbcType=TIMESTAMP},
+      registIP = #{registip,jdbcType=VARCHAR},
+      lastLoginDate = #{lastlogindate,jdbcType=TIMESTAMP},
+      firstlogin = #{firstlogin,jdbcType=BIT},
+      daixiaoflag = #{daixiaoflag,jdbcType=BIT},
+      webtype2 = #{webtype2,jdbcType=BIT},
+      webtype3 = #{webtype3,jdbcType=BIT},
+      pwdquestion = #{pwdquestion,jdbcType=VARCHAR},
+      pwdanswer = #{pwdanswer,jdbcType=VARCHAR},
+      umobile = #{umobile,jdbcType=VARCHAR},
+      uqq = #{uqq,jdbcType=VARCHAR},
+      tjperson = #{tjperson,jdbcType=VARCHAR},
+      pathcheck = #{pathcheck,jdbcType=BIT},
+      islock = #{islock,jdbcType=BIT},
+      userlevel = #{userlevel,jdbcType=BIT},
+      uidnum = #{uidnum,jdbcType=VARCHAR},
+      payemail = #{payemail,jdbcType=VARCHAR},
+      payPwd = #{paypwd,jdbcType=VARCHAR},
+      isfrom = #{isfrom,jdbcType=TINYINT},
+      openid = #{openid,jdbcType=VARCHAR},
+      phonecheck = #{phonecheck,jdbcType=TINYINT},
+      shopsee = #{shopsee,jdbcType=TINYINT},
+      chouTimes = #{choutimes,jdbcType=SMALLINT},
+      bzjcheck = #{bzjcheck,jdbcType=TINYINT},
+      emailcheck = #{emailcheck,jdbcType=TINYINT},
+      pstate = #{pstate,jdbcType=TINYINT},
+      zmoney = #{zmoney,jdbcType=DECIMAL},
+      jsmoney = #{jsmoney,jdbcType=DECIMAL},
+      jingyan = #{jingyan,jdbcType=BIGINT},
+      mgpwd = #{mgpwd,jdbcType=TINYINT},
+      defpwd = #{defpwd,jdbcType=VARCHAR},
+      nickName = #{nickname,jdbcType=VARCHAR},
+      uwangwang = #{uwangwang,jdbcType=VARCHAR},
+      picUrl = #{picurl,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      secret_key = #{secretKey,jdbcType=VARCHAR},
+      joinyy = #{joinyy,jdbcType=TINYINT},
+      stdgo = #{stdgo,jdbcType=TINYINT},
+      sitemk = #{sitemk,jdbcType=SMALLINT},
+      sdTjman = #{sdtjman,jdbcType=VARCHAR},
+      lastLogIp = #{lastlogip,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyd.channel.dao.RemarkMapper" >
+  <resultMap id="BaseResultMap" type="com.lyd.channel.pojo.Remark" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="reguser_id" property="reguserId" jdbcType="INTEGER" />
+    <result column="remarkuser_id" property="remarkuserId" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, reguser_id, remarkuser_id, content, insert_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from remark
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from remark
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lyd.channel.pojo.Remark" >
+    insert into remark (id, reguser_id, remarkuser_id, 
+      content, insert_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{reguserId,jdbcType=INTEGER}, #{remarkuserId,jdbcType=INTEGER}, 
+      #{content,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyd.channel.pojo.Remark" >
+    insert into remark
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="reguserId != null" >
+        reguser_id,
+      </if>
+      <if test="remarkuserId != null" >
+        remarkuser_id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="reguserId != null" >
+        #{reguserId,jdbcType=INTEGER},
+      </if>
+      <if test="remarkuserId != null" >
+        #{remarkuserId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyd.channel.pojo.Remark" >
+    update remark
+    <set >
+      <if test="reguserId != null" >
+        reguser_id = #{reguserId,jdbcType=INTEGER},
+      </if>
+      <if test="remarkuserId != null" >
+        remarkuser_id = #{remarkuserId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyd.channel.pojo.Remark" >
+    update remark
+    set reguser_id = #{reguserId,jdbcType=INTEGER},
+      remarkuser_id = #{remarkuserId,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

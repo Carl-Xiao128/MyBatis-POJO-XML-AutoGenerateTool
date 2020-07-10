@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wupao.job.mapper.AgtinforDynamicMapper">
+  <resultMap id="BaseResultMap" type="com.wupao.job.pojo.AgtinforDynamic">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="view" jdbcType="INTEGER" property="view" />
+    <result column="zan" jdbcType="INTEGER" property="zan" />
+    <result column="mark" jdbcType="INTEGER" property="mark" />
+    <result column="two_type" jdbcType="INTEGER" property="twoType" />
+    <result column="is_top" jdbcType="BIT" property="isTop" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.wupao.job.pojo.AgtinforDynamic">
+    <result column="contect" jdbcType="LONGVARCHAR" property="contect" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, uid, title, view, zan, mark, two_type, is_top, insert_time, update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    contect
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wupao.job.pojo.AgtinforDynamic">
+    insert into article (id, type, uid, 
+      title, view, zan, mark, 
+      two_type, is_top, insert_time, 
+      update_time, contect)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{view,jdbcType=INTEGER}, #{zan,jdbcType=INTEGER}, #{mark,jdbcType=INTEGER}, 
+      #{twoType,jdbcType=INTEGER}, #{isTop,jdbcType=BIT}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{contect,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wupao.job.pojo.AgtinforDynamic">
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="view != null">
+        view,
+      </if>
+      <if test="zan != null">
+        zan,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="twoType != null">
+        two_type,
+      </if>
+      <if test="isTop != null">
+        is_top,
+      </if>
+      <if test="insertTime != null">
+        insert_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="contect != null">
+        contect,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="view != null">
+        #{view,jdbcType=INTEGER},
+      </if>
+      <if test="zan != null">
+        #{zan,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=INTEGER},
+      </if>
+      <if test="twoType != null">
+        #{twoType,jdbcType=INTEGER},
+      </if>
+      <if test="isTop != null">
+        #{isTop,jdbcType=BIT},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contect != null">
+        #{contect,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wupao.job.pojo.AgtinforDynamic">
+    update article
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="view != null">
+        view = #{view,jdbcType=INTEGER},
+      </if>
+      <if test="zan != null">
+        zan = #{zan,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=INTEGER},
+      </if>
+      <if test="twoType != null">
+        two_type = #{twoType,jdbcType=INTEGER},
+      </if>
+      <if test="isTop != null">
+        is_top = #{isTop,jdbcType=BIT},
+      </if>
+      <if test="insertTime != null">
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contect != null">
+        contect = #{contect,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wupao.job.pojo.AgtinforDynamic">
+    update article
+    set type = #{type,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      view = #{view,jdbcType=INTEGER},
+      zan = #{zan,jdbcType=INTEGER},
+      mark = #{mark,jdbcType=INTEGER},
+      two_type = #{twoType,jdbcType=INTEGER},
+      is_top = #{isTop,jdbcType=BIT},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      contect = #{contect,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wupao.job.pojo.AgtinforDynamic">
+    update article
+    set type = #{type,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      view = #{view,jdbcType=INTEGER},
+      zan = #{zan,jdbcType=INTEGER},
+      mark = #{mark,jdbcType=INTEGER},
+      two_type = #{twoType,jdbcType=INTEGER},
+      is_top = #{isTop,jdbcType=BIT},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wupao.job.pojo.AgtinforDynamic">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="infor_id" jdbcType="INTEGER" property="inforId" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_resource" jdbcType="INTEGER" property="isResource" />
+    <result column="is_relation" jdbcType="INTEGER" property="isRelation" />
+    <result column="user_intent" jdbcType="VARCHAR" property="userIntent" />
+    <result column="follow_result" jdbcType="INTEGER" property="followResult" />
+    <result column="images" jdbcType="VARCHAR" property="images" />
+    <result column="descript" jdbcType="VARCHAR" property="descript" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="shenpi_flag" jdbcType="INTEGER" property="shenpiFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, infor_id, flag, remark, is_resource, is_relation, user_intent, follow_result, 
+    images, descript, update_time, insert_time, shenpi_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from agtinfor_dynamic
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from agtinfor_dynamic
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wupao.job.pojo.AgtinforDynamic">
+    insert into agtinfor_dynamic (id, user_id, infor_id, 
+      flag, remark, is_resource, 
+      is_relation, user_intent, follow_result, 
+      images, descript, update_time, 
+      insert_time, shenpi_flag)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{inforId,jdbcType=INTEGER}, 
+      #{flag,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{isResource,jdbcType=INTEGER}, 
+      #{isRelation,jdbcType=INTEGER}, #{userIntent,jdbcType=VARCHAR}, #{followResult,jdbcType=INTEGER}, 
+      #{images,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{insertTime,jdbcType=TIMESTAMP}, #{shenpiFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wupao.job.pojo.AgtinforDynamic">
+    insert into agtinfor_dynamic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="inforId != null">
+        infor_id,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="isResource != null">
+        is_resource,
+      </if>
+      <if test="isRelation != null">
+        is_relation,
+      </if>
+      <if test="userIntent != null">
+        user_intent,
+      </if>
+      <if test="followResult != null">
+        follow_result,
+      </if>
+      <if test="images != null">
+        images,
+      </if>
+      <if test="descript != null">
+        descript,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="insertTime != null">
+        insert_time,
+      </if>
+      <if test="shenpiFlag != null">
+        shenpi_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="inforId != null">
+        #{inforId,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isResource != null">
+        #{isResource,jdbcType=INTEGER},
+      </if>
+      <if test="isRelation != null">
+        #{isRelation,jdbcType=INTEGER},
+      </if>
+      <if test="userIntent != null">
+        #{userIntent,jdbcType=VARCHAR},
+      </if>
+      <if test="followResult != null">
+        #{followResult,jdbcType=INTEGER},
+      </if>
+      <if test="images != null">
+        #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null">
+        #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shenpiFlag != null">
+        #{shenpiFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wupao.job.pojo.AgtinforDynamic">
+    update agtinfor_dynamic
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="inforId != null">
+        infor_id = #{inforId,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isResource != null">
+        is_resource = #{isResource,jdbcType=INTEGER},
+      </if>
+      <if test="isRelation != null">
+        is_relation = #{isRelation,jdbcType=INTEGER},
+      </if>
+      <if test="userIntent != null">
+        user_intent = #{userIntent,jdbcType=VARCHAR},
+      </if>
+      <if test="followResult != null">
+        follow_result = #{followResult,jdbcType=INTEGER},
+      </if>
+      <if test="images != null">
+        images = #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null">
+        descript = #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null">
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shenpiFlag != null">
+        shenpi_flag = #{shenpiFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wupao.job.pojo.AgtinforDynamic">
+    update agtinfor_dynamic
+    set user_id = #{userId,jdbcType=INTEGER},
+      infor_id = #{inforId,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_resource = #{isResource,jdbcType=INTEGER},
+      is_relation = #{isRelation,jdbcType=INTEGER},
+      user_intent = #{userIntent,jdbcType=VARCHAR},
+      follow_result = #{followResult,jdbcType=INTEGER},
+      images = #{images,jdbcType=VARCHAR},
+      descript = #{descript,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      shenpi_flag = #{shenpiFlag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

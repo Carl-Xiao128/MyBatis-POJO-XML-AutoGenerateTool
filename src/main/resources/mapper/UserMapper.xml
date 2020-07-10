@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wupao.job.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.wupao.job.pojo.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="weixin" property="weixin" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="loginpwd" property="loginpwd" jdbcType="VARCHAR" />
+    <result column="strong" property="strong" jdbcType="INTEGER" />
+    <result column="paypwd" property="paypwd" jdbcType="VARCHAR" />
+    <result column="pay_flag" property="payFlag" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="head_img" property="headImg" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="total_money" property="totalMoney" jdbcType="DECIMAL" />
+    <result column="tx_money" property="txMoney" jdbcType="DECIMAL" />
+    <result column="regist_time" property="registTime" jdbcType="TIMESTAMP" />
+    <result column="regist_ip" property="registIp" jdbcType="VARCHAR" />
+    <result column="regist_area" property="registArea" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="last_time" property="lastTime" jdbcType="TIMESTAMP" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, mobile, sex, qq, weixin, salt, loginpwd, strong, paypwd, pay_flag, 
+    remark, head_img, status, total_money, tx_money, regist_time, regist_ip, regist_area, 
+    is_del, update_time, last_time, version, source
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wupao.job.pojo.User" >
+    insert into user (id, username, mobile, 
+      sex, qq, weixin, salt, 
+      loginpwd, strong, paypwd, 
+      pay_flag, remark, head_img, 
+      status, total_money, tx_money, 
+      regist_time, regist_ip, regist_area, 
+      is_del, update_time, last_time, 
+      version, source)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER}, #{qq,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, 
+      #{loginpwd,jdbcType=VARCHAR}, #{strong,jdbcType=INTEGER}, #{paypwd,jdbcType=VARCHAR}, 
+      #{payFlag,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{headImg,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{totalMoney,jdbcType=DECIMAL}, #{txMoney,jdbcType=DECIMAL}, 
+      #{registTime,jdbcType=TIMESTAMP}, #{registIp,jdbcType=VARCHAR}, #{registArea,jdbcType=VARCHAR}, 
+      #{isDel,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{lastTime,jdbcType=TIMESTAMP}, 
+      #{version,jdbcType=INTEGER}, #{source,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wupao.job.pojo.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="weixin != null" >
+        weixin,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="loginpwd != null" >
+        loginpwd,
+      </if>
+      <if test="strong != null" >
+        strong,
+      </if>
+      <if test="paypwd != null" >
+        paypwd,
+      </if>
+      <if test="payFlag != null" >
+        pay_flag,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="headImg != null" >
+        head_img,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="totalMoney != null" >
+        total_money,
+      </if>
+      <if test="txMoney != null" >
+        tx_money,
+      </if>
+      <if test="registTime != null" >
+        regist_time,
+      </if>
+      <if test="registIp != null" >
+        regist_ip,
+      </if>
+      <if test="registArea != null" >
+        regist_area,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="lastTime != null" >
+        last_time,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="loginpwd != null" >
+        #{loginpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="strong != null" >
+        #{strong,jdbcType=INTEGER},
+      </if>
+      <if test="paypwd != null" >
+        #{paypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="payFlag != null" >
+        #{payFlag,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="totalMoney != null" >
+        #{totalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="txMoney != null" >
+        #{txMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="registTime != null" >
+        #{registTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registIp != null" >
+        #{registIp,jdbcType=VARCHAR},
+      </if>
+      <if test="registArea != null" >
+        #{registArea,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wupao.job.pojo.User" >
+    update user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="loginpwd != null" >
+        loginpwd = #{loginpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="strong != null" >
+        strong = #{strong,jdbcType=INTEGER},
+      </if>
+      <if test="paypwd != null" >
+        paypwd = #{paypwd,jdbcType=VARCHAR},
+      </if>
+      <if test="payFlag != null" >
+        pay_flag = #{payFlag,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="totalMoney != null" >
+        total_money = #{totalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="txMoney != null" >
+        tx_money = #{txMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="registTime != null" >
+        regist_time = #{registTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registIp != null" >
+        regist_ip = #{registIp,jdbcType=VARCHAR},
+      </if>
+      <if test="registArea != null" >
+        regist_area = #{registArea,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null" >
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wupao.job.pojo.User" >
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      qq = #{qq,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      loginpwd = #{loginpwd,jdbcType=VARCHAR},
+      strong = #{strong,jdbcType=INTEGER},
+      paypwd = #{paypwd,jdbcType=VARCHAR},
+      pay_flag = #{payFlag,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      total_money = #{totalMoney,jdbcType=DECIMAL},
+      tx_money = #{txMoney,jdbcType=DECIMAL},
+      regist_time = #{registTime,jdbcType=TIMESTAMP},
+      regist_ip = #{registIp,jdbcType=VARCHAR},
+      regist_area = #{registArea,jdbcType=VARCHAR},
+      is_del = #{isDel,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      last_time = #{lastTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER},
+      source = #{source,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

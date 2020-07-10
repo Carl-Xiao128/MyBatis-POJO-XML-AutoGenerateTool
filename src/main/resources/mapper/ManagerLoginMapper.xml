@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wupao.job.mapper.ManagerLoginMapper" >
+  <resultMap id="BaseResultMap" type="com.wupao.job.pojo.ManagerLogin" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="login_uid" property="loginUid" jdbcType="INTEGER" />
+    <result column="login_uname" property="loginUname" jdbcType="VARCHAR" />
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+    <result column="login_addr" property="loginAddr" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, login_uid, login_uname, login_ip, login_addr, insert_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from manager_login
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from manager_login
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wupao.job.pojo.ManagerLogin" >
+    insert into manager_login (id, login_uid, login_uname, 
+      login_ip, login_addr, insert_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{loginUid,jdbcType=INTEGER}, #{loginUname,jdbcType=VARCHAR}, 
+      #{loginIp,jdbcType=VARCHAR}, #{loginAddr,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wupao.job.pojo.ManagerLogin" >
+    insert into manager_login
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="loginUid != null" >
+        login_uid,
+      </if>
+      <if test="loginUname != null" >
+        login_uname,
+      </if>
+      <if test="loginIp != null" >
+        login_ip,
+      </if>
+      <if test="loginAddr != null" >
+        login_addr,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="loginUid != null" >
+        #{loginUid,jdbcType=INTEGER},
+      </if>
+      <if test="loginUname != null" >
+        #{loginUname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIp != null" >
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginAddr != null" >
+        #{loginAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wupao.job.pojo.ManagerLogin" >
+    update manager_login
+    <set >
+      <if test="loginUid != null" >
+        login_uid = #{loginUid,jdbcType=INTEGER},
+      </if>
+      <if test="loginUname != null" >
+        login_uname = #{loginUname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIp != null" >
+        login_ip = #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginAddr != null" >
+        login_addr = #{loginAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wupao.job.pojo.ManagerLogin" >
+    update manager_login
+    set login_uid = #{loginUid,jdbcType=INTEGER},
+      login_uname = #{loginUname,jdbcType=VARCHAR},
+      login_ip = #{loginIp,jdbcType=VARCHAR},
+      login_addr = #{loginAddr,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

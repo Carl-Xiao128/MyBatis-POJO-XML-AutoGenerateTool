@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mdd.admin.mapper.WebOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.mdd.admin.pojo.WebOrder" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="meal_no" property="mealNo" jdbcType="VARCHAR" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="pay_account" property="payAccount" jdbcType="VARCHAR" />
+    <result column="add_date" property="addDate" jdbcType="TIMESTAMP" />
+    <result column="pay_date" property="payDate" jdbcType="TIMESTAMP" />
+    <result column="cancel_date" property="cancelDate" jdbcType="TIMESTAMP" />
+    <result column="refund_date" property="refundDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, meal_no, order_status, order_type, pay_account, add_date, pay_date, cancel_date, 
+    refund_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mdd_web_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mdd_web_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mdd.admin.pojo.WebOrder" >
+    insert into mdd_web_order (id, meal_no, order_status, 
+      order_type, pay_account, add_date, 
+      pay_date, cancel_date, refund_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{mealNo,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, 
+      #{orderType,jdbcType=INTEGER}, #{payAccount,jdbcType=VARCHAR}, #{addDate,jdbcType=TIMESTAMP}, 
+      #{payDate,jdbcType=TIMESTAMP}, #{cancelDate,jdbcType=TIMESTAMP}, #{refundDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mdd.admin.pojo.WebOrder" >
+    insert into mdd_web_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="mealNo != null" >
+        meal_no,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="payAccount != null" >
+        pay_account,
+      </if>
+      <if test="addDate != null" >
+        add_date,
+      </if>
+      <if test="payDate != null" >
+        pay_date,
+      </if>
+      <if test="cancelDate != null" >
+        cancel_date,
+      </if>
+      <if test="refundDate != null" >
+        refund_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mealNo != null" >
+        #{mealNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="payAccount != null" >
+        #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="addDate != null" >
+        #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payDate != null" >
+        #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelDate != null" >
+        #{cancelDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="refundDate != null" >
+        #{refundDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mdd.admin.pojo.WebOrder" >
+    update mdd_web_order
+    <set >
+      <if test="mealNo != null" >
+        meal_no = #{mealNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="payAccount != null" >
+        pay_account = #{payAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="addDate != null" >
+        add_date = #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payDate != null" >
+        pay_date = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelDate != null" >
+        cancel_date = #{cancelDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="refundDate != null" >
+        refund_date = #{refundDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mdd.admin.pojo.WebOrder" >
+    update mdd_web_order
+    set meal_no = #{mealNo,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      order_type = #{orderType,jdbcType=INTEGER},
+      pay_account = #{payAccount,jdbcType=VARCHAR},
+      add_date = #{addDate,jdbcType=TIMESTAMP},
+      pay_date = #{payDate,jdbcType=TIMESTAMP},
+      cancel_date = #{cancelDate,jdbcType=TIMESTAMP},
+      refund_date = #{refundDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

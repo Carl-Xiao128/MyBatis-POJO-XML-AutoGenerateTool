@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wupao.job.mapper.UseRemitMapper" >
+  <resultMap id="BaseResultMap" type="com.wupao.job.pojo.UseRemit" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="rmid" property="rmid" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="deal_uid" property="dealUid" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="remiiter" property="remiiter" jdbcType="VARCHAR" />
+    <result column="remit_time" property="remitTime" jdbcType="TIMESTAMP" />
+    <result column="examine_time" property="examineTime" jdbcType="TIMESTAMP" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, rmid, type, user_id, deal_uid, money, status, account, remiiter, remit_time, 
+    examine_time, insert_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from use_remit
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from use_remit
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wupao.job.pojo.UseRemit" >
+    insert into use_remit (id, rmid, type, 
+      user_id, deal_uid, money, 
+      status, account, remiiter, 
+      remit_time, examine_time, insert_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{rmid,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{dealUid,jdbcType=INTEGER}, #{money,jdbcType=DECIMAL}, 
+      #{status,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{remiiter,jdbcType=VARCHAR}, 
+      #{remitTime,jdbcType=TIMESTAMP}, #{examineTime,jdbcType=TIMESTAMP}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wupao.job.pojo.UseRemit" >
+    insert into use_remit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rmid != null" >
+        rmid,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="dealUid != null" >
+        deal_uid,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="remiiter != null" >
+        remiiter,
+      </if>
+      <if test="remitTime != null" >
+        remit_time,
+      </if>
+      <if test="examineTime != null" >
+        examine_time,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="rmid != null" >
+        #{rmid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="dealUid != null" >
+        #{dealUid,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="remiiter != null" >
+        #{remiiter,jdbcType=VARCHAR},
+      </if>
+      <if test="remitTime != null" >
+        #{remitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examineTime != null" >
+        #{examineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wupao.job.pojo.UseRemit" >
+    update use_remit
+    <set >
+      <if test="rmid != null" >
+        rmid = #{rmid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="dealUid != null" >
+        deal_uid = #{dealUid,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="remiiter != null" >
+        remiiter = #{remiiter,jdbcType=VARCHAR},
+      </if>
+      <if test="remitTime != null" >
+        remit_time = #{remitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examineTime != null" >
+        examine_time = #{examineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wupao.job.pojo.UseRemit" >
+    update use_remit
+    set rmid = #{rmid,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      deal_uid = #{dealUid,jdbcType=INTEGER},
+      money = #{money,jdbcType=DECIMAL},
+      status = #{status,jdbcType=INTEGER},
+      account = #{account,jdbcType=VARCHAR},
+      remiiter = #{remiiter,jdbcType=VARCHAR},
+      remit_time = #{remitTime,jdbcType=TIMESTAMP},
+      examine_time = #{examineTime,jdbcType=TIMESTAMP},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

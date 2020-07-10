@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wupao.job.mapper.ZinxunMapper" >
+  <resultMap id="BaseResultMap" type="com.wupao.job.pojo.Zinxun" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ztype" property="ztype" jdbcType="INTEGER" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="izsmo" property="izsmo" jdbcType="INTEGER" />
+    <result column="istop" property="istop" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ztype, qq, izsmo, istop
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from zixun
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from zixun
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wupao.job.pojo.Zinxun" >
+    insert into zixun (id, ztype, qq, 
+      izsmo, istop)
+    values (#{id,jdbcType=INTEGER}, #{ztype,jdbcType=INTEGER}, #{qq,jdbcType=VARCHAR}, 
+      #{izsmo,jdbcType=INTEGER}, #{istop,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wupao.job.pojo.Zinxun" >
+    insert into zixun
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ztype != null" >
+        ztype,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="izsmo != null" >
+        izsmo,
+      </if>
+      <if test="istop != null" >
+        istop,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ztype != null" >
+        #{ztype,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="izsmo != null" >
+        #{izsmo,jdbcType=INTEGER},
+      </if>
+      <if test="istop != null" >
+        #{istop,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wupao.job.pojo.Zinxun" >
+    update zixun
+    <set >
+      <if test="ztype != null" >
+        ztype = #{ztype,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="izsmo != null" >
+        izsmo = #{izsmo,jdbcType=INTEGER},
+      </if>
+      <if test="istop != null" >
+        istop = #{istop,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wupao.job.pojo.Zinxun" >
+    update zixun
+    set ztype = #{ztype,jdbcType=INTEGER},
+      qq = #{qq,jdbcType=VARCHAR},
+      izsmo = #{izsmo,jdbcType=INTEGER},
+      istop = #{istop,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

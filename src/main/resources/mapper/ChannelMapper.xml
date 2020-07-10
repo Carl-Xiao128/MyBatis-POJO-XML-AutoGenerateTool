@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyd.channel.dao.ChannelMapper" >
+  <resultMap id="BaseResultMap" type="com.lyd.channel.pojo.Channel" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="channel_name" property="channelName" jdbcType="VARCHAR" />
+    <result column="channel_url" property="channelUrl" jdbcType="VARCHAR" />
+    <result column="channel_mobile" property="channelMobile" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="channel_qq" property="channelQq" jdbcType="VARCHAR" />
+    <result column="channel_email" property="channelEmail" jdbcType="VARCHAR" />
+    <result column="channel_type" property="channelType" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="exam_id" property="examId" jdbcType="INTEGER" />
+    <result column="examine_time" property="examineTime" jdbcType="TIMESTAMP" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="imgone" property="imgone" jdbcType="VARCHAR" />
+    <result column="imgtwo" property="imgtwo" jdbcType="VARCHAR" />
+    <result column="imgthree" property="imgthree" jdbcType="VARCHAR" />
+    <result column="contract_time" property="contractTime" jdbcType="TIMESTAMP" />
+    <result column="sarea" property="sarea" jdbcType="VARCHAR" />
+    <result column="sprov" property="sprov" jdbcType="VARCHAR" />
+    <result column="sxian" property="sxian" jdbcType="VARCHAR" />
+    <result column="specific_addr" property="specificAddr" jdbcType="VARCHAR" />
+    <result column="industry_belong" property="industryBelong" jdbcType="VARCHAR" />
+    <result column="channel_level" property="channelLevel" jdbcType="INTEGER" />
+    <result column="channel_from" property="channelFrom" jdbcType="VARCHAR" />
+    <result column="contract_num" property="contractNum" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, channel_name, channel_url, channel_mobile, user_name, channel_qq, channel_email, 
+    channel_type, status, reason, exam_id, examine_time, insert_time, update_time, remark, 
+    imgone, imgtwo, imgthree, contract_time, sarea, sprov, sxian, specific_addr, industry_belong, 
+    channel_level, channel_from, contract_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from channel
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from channel
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lyd.channel.pojo.Channel" >
+    insert into channel (id, user_id, channel_name, 
+      channel_url, channel_mobile, user_name, 
+      channel_qq, channel_email, channel_type, 
+      status, reason, exam_id, 
+      examine_time, insert_time, update_time, 
+      remark, imgone, imgtwo, 
+      imgthree, contract_time, sarea, 
+      sprov, sxian, specific_addr, 
+      industry_belong, channel_level, channel_from, 
+      contract_num)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{channelName,jdbcType=VARCHAR}, 
+      #{channelUrl,jdbcType=VARCHAR}, #{channelMobile,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{channelQq,jdbcType=VARCHAR}, #{channelEmail,jdbcType=VARCHAR}, #{channelType,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, #{examId,jdbcType=INTEGER}, 
+      #{examineTime,jdbcType=TIMESTAMP}, #{insertTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{imgone,jdbcType=VARCHAR}, #{imgtwo,jdbcType=VARCHAR}, 
+      #{imgthree,jdbcType=VARCHAR}, #{contractTime,jdbcType=TIMESTAMP}, #{sarea,jdbcType=VARCHAR}, 
+      #{sprov,jdbcType=VARCHAR}, #{sxian,jdbcType=VARCHAR}, #{specificAddr,jdbcType=VARCHAR}, 
+      #{industryBelong,jdbcType=VARCHAR}, #{channelLevel,jdbcType=INTEGER}, #{channelFrom,jdbcType=VARCHAR}, 
+      #{contractNum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyd.channel.pojo.Channel" >
+    insert into channel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="channelName != null" >
+        channel_name,
+      </if>
+      <if test="channelUrl != null" >
+        channel_url,
+      </if>
+      <if test="channelMobile != null" >
+        channel_mobile,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="channelQq != null" >
+        channel_qq,
+      </if>
+      <if test="channelEmail != null" >
+        channel_email,
+      </if>
+      <if test="channelType != null" >
+        channel_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="examId != null" >
+        exam_id,
+      </if>
+      <if test="examineTime != null" >
+        examine_time,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="imgone != null" >
+        imgone,
+      </if>
+      <if test="imgtwo != null" >
+        imgtwo,
+      </if>
+      <if test="imgthree != null" >
+        imgthree,
+      </if>
+      <if test="contractTime != null" >
+        contract_time,
+      </if>
+      <if test="sarea != null" >
+        sarea,
+      </if>
+      <if test="sprov != null" >
+        sprov,
+      </if>
+      <if test="sxian != null" >
+        sxian,
+      </if>
+      <if test="specificAddr != null" >
+        specific_addr,
+      </if>
+      <if test="industryBelong != null" >
+        industry_belong,
+      </if>
+      <if test="channelLevel != null" >
+        channel_level,
+      </if>
+      <if test="channelFrom != null" >
+        channel_from,
+      </if>
+      <if test="contractNum != null" >
+        contract_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="channelName != null" >
+        #{channelName,jdbcType=VARCHAR},
+      </if>
+      <if test="channelUrl != null" >
+        #{channelUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="channelMobile != null" >
+        #{channelMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="channelQq != null" >
+        #{channelQq,jdbcType=VARCHAR},
+      </if>
+      <if test="channelEmail != null" >
+        #{channelEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="channelType != null" >
+        #{channelType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="examId != null" >
+        #{examId,jdbcType=INTEGER},
+      </if>
+      <if test="examineTime != null" >
+        #{examineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="imgone != null" >
+        #{imgone,jdbcType=VARCHAR},
+      </if>
+      <if test="imgtwo != null" >
+        #{imgtwo,jdbcType=VARCHAR},
+      </if>
+      <if test="imgthree != null" >
+        #{imgthree,jdbcType=VARCHAR},
+      </if>
+      <if test="contractTime != null" >
+        #{contractTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sarea != null" >
+        #{sarea,jdbcType=VARCHAR},
+      </if>
+      <if test="sprov != null" >
+        #{sprov,jdbcType=VARCHAR},
+      </if>
+      <if test="sxian != null" >
+        #{sxian,jdbcType=VARCHAR},
+      </if>
+      <if test="specificAddr != null" >
+        #{specificAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="industryBelong != null" >
+        #{industryBelong,jdbcType=VARCHAR},
+      </if>
+      <if test="channelLevel != null" >
+        #{channelLevel,jdbcType=INTEGER},
+      </if>
+      <if test="channelFrom != null" >
+        #{channelFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNum != null" >
+        #{contractNum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyd.channel.pojo.Channel" >
+    update channel
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="channelName != null" >
+        channel_name = #{channelName,jdbcType=VARCHAR},
+      </if>
+      <if test="channelUrl != null" >
+        channel_url = #{channelUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="channelMobile != null" >
+        channel_mobile = #{channelMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="channelQq != null" >
+        channel_qq = #{channelQq,jdbcType=VARCHAR},
+      </if>
+      <if test="channelEmail != null" >
+        channel_email = #{channelEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="channelType != null" >
+        channel_type = #{channelType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="examId != null" >
+        exam_id = #{examId,jdbcType=INTEGER},
+      </if>
+      <if test="examineTime != null" >
+        examine_time = #{examineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="imgone != null" >
+        imgone = #{imgone,jdbcType=VARCHAR},
+      </if>
+      <if test="imgtwo != null" >
+        imgtwo = #{imgtwo,jdbcType=VARCHAR},
+      </if>
+      <if test="imgthree != null" >
+        imgthree = #{imgthree,jdbcType=VARCHAR},
+      </if>
+      <if test="contractTime != null" >
+        contract_time = #{contractTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sarea != null" >
+        sarea = #{sarea,jdbcType=VARCHAR},
+      </if>
+      <if test="sprov != null" >
+        sprov = #{sprov,jdbcType=VARCHAR},
+      </if>
+      <if test="sxian != null" >
+        sxian = #{sxian,jdbcType=VARCHAR},
+      </if>
+      <if test="specificAddr != null" >
+        specific_addr = #{specificAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="industryBelong != null" >
+        industry_belong = #{industryBelong,jdbcType=VARCHAR},
+      </if>
+      <if test="channelLevel != null" >
+        channel_level = #{channelLevel,jdbcType=INTEGER},
+      </if>
+      <if test="channelFrom != null" >
+        channel_from = #{channelFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNum != null" >
+        contract_num = #{contractNum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyd.channel.pojo.Channel" >
+    update channel
+    set user_id = #{userId,jdbcType=INTEGER},
+      channel_name = #{channelName,jdbcType=VARCHAR},
+      channel_url = #{channelUrl,jdbcType=VARCHAR},
+      channel_mobile = #{channelMobile,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      channel_qq = #{channelQq,jdbcType=VARCHAR},
+      channel_email = #{channelEmail,jdbcType=VARCHAR},
+      channel_type = #{channelType,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=VARCHAR},
+      exam_id = #{examId,jdbcType=INTEGER},
+      examine_time = #{examineTime,jdbcType=TIMESTAMP},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      imgone = #{imgone,jdbcType=VARCHAR},
+      imgtwo = #{imgtwo,jdbcType=VARCHAR},
+      imgthree = #{imgthree,jdbcType=VARCHAR},
+      contract_time = #{contractTime,jdbcType=TIMESTAMP},
+      sarea = #{sarea,jdbcType=VARCHAR},
+      sprov = #{sprov,jdbcType=VARCHAR},
+      sxian = #{sxian,jdbcType=VARCHAR},
+      specific_addr = #{specificAddr,jdbcType=VARCHAR},
+      industry_belong = #{industryBelong,jdbcType=VARCHAR},
+      channel_level = #{channelLevel,jdbcType=INTEGER},
+      channel_from = #{channelFrom,jdbcType=VARCHAR},
+      contract_num = #{contractNum,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+   <sql id="Select_Column_List" >
+    c.id, c.user_id, c.channel_name, c.channel_url, c.channel_mobile, c.user_name, c.channel_qq, c.channel_email,
+    c.channel_type, c.status, c.reason, c.exam_id, c.examine_time, c.insert_time, c.update_time, c.remark,
+    c.imgone, c.imgtwo, c.imgthree, c.contract_time, c.sarea, c.sprov, c.sxian, c.specific_addr, c.industry_belong,
+    c.channel_level, c.channel_from, c.contract_num
+  </sql>
+  <select id="channelList" resultType="com.lyd.channel.utils.ChannelDTO">
+    select
+  	<include refid="Select_Column_List"/>,u.username importName
+  	from channel c
+  	left join user u on c.user_id = u.id
+  	<where>
+	  	<if test="param.userId!=null and param.userId!=''">
+	  	 	c.user_id=#{param.userId}
+	  	</if>
+	  	<if test="param.userName!=null and param.userName!=''">
+	  		<bind name="usernamePattern" value="'%' +param.userName + '%'" />
+	  		and u.username like #{usernamePattern}
+	  	</if>
+	  	<if test="param.channelName!=null and param.channelName!=''">
+	  		<bind name="channelnamePattern" value="'%' +param.channelName + '%'" />
+	  		and c.channel_name like #{channelnamePattern}
+	  	</if>
+	  	<if test="param.channelMobile!=null and param.channelMobile!=''">
+	  		<bind name="channelMobilePattern" value="'%' +param.channelMobile + '%'" />
+	  		and c.channel_mobile like #{channelMobilePattern}
+	  	</if>
+	  	<if test="param.channelType!=null and param.channelType!=''">
+	  		and c.channel_type = #{param.channelType}
+	  	</if>
+	  	<if test="param.status!=null and param.status!=''">
+	  		and c.status = #{param.status}
+	  	</if>
+	  	<if test="param.startDate!=null and param.startDate!=''">
+	  		and c.insert_time &gt;=#{param.startDate}
+	  	</if>
+	  	<if test="param.endDate!=null and param.endDate!=''">
+	  		and c.insert_time &lt;=#{param.endDate}
+	  	</if>
+  	</where> 
+  	order by c.insert_time desc
+  </select>
+  <select id="channelUserList" resultType="com.lyd.channel.utils.ChannelUserDTO">
+    select
+  	u.loginName,
+  	u.umobile,
+  	u.uqq,
+  	c.channel_name,
+  	c.channel_type,
+  	u.registDate
+  	from theuser.users u
+  	inner join lydqudao.channel c on u.tjperson = c.channel_name
+  	<where>
+  		c.status = 1
+  		<if test="param.userId!=null and param.userId!=''">
+	  	 	c.user_id=#{param.userId}
+	  	</if>
+	  	<if test="param.loginName!=null and param.loginName!=''">
+	  		<bind name="loginNamePattern" value="'%' +param.loginName + '%'" />
+	  		and u.loginName like #{loginNamePattern}
+	  	</if>
+	  	<if test="param.channelName!=null and param.channelName!=''">
+	  		<bind name="channelnamePattern" value="'%' +param.channelName + '%'" />
+	  		and c.channel_name like #{channelnamePattern}
+	  	</if>
+	  	<if test="param.umobile!=null and param.umobile!=''">
+	  		<bind name="umobilePattern" value="'%' +param.umobile + '%'" />
+	  		and u.umobile like #{umobilePattern}
+	  	</if>
+	  	<if test="param.uqq!=null and param.uqq!=''">
+	  		<bind name="uqqPattern" value="'%' +param.uqq + '%'" />
+	  		and u.uqq like #{uqqPattern}
+	  	</if>
+	  	<if test="param.channelType!=null and param.channelType!=''">
+	  		and c.channel_type = #{param.channelType}
+	  	</if>
+	  	<if test="param.startDate!=null and param.startDate!=''">
+	  		and u.registDate &gt;=#{param.startDate}
+	  	</if>
+	  	<if test="param.endDate!=null and param.endDate!=''">
+	  		and u.registDate &lt;=#{param.endDate}
+	  	</if>
+  	</where> 
+  	order by u.registDate desc
+  </select>
+</mapper>

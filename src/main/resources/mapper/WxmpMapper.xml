@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wupao.vipwss.mapper.WxmpMapper" >
+  <resultMap id="BaseResultMap" type="com.wupao.vipwss.pojo.Wxmp" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="wmid" property="wmid" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="wxmp_num" property="wxmpNum" jdbcType="VARCHAR" />
+    <result column="wxmp_name" property="wxmpName" jdbcType="VARCHAR" />
+    <result column="wxmp_style" property="wxmpStyle" jdbcType="INTEGER" />
+    <result column="wtype_id" property="wtypeId" jdbcType="INTEGER" />
+    <result column="fans" property="fans" jdbcType="BIGINT" />
+    <result column="wprice" property="wprice" jdbcType="DECIMAL" />
+    <result column="girl_fans" property="girlFans" jdbcType="VARCHAR" />
+    <result column="top_uv" property="topUv" jdbcType="VARCHAR" />
+    <result column="main_type" property="mainType" jdbcType="INTEGER" />
+    <result column="is_change_mt" property="isChangeMt" jdbcType="INTEGER" />
+    <result column="fsarea_id" property="fsareaId" jdbcType="INTEGER" />
+    <result column="mflow" property="mflow" jdbcType="VARCHAR" />
+    <result column="isauth" property="isauth" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="read_num" property="readNum" jdbcType="BIGINT" />
+    <result column="is_create" property="isCreate" jdbcType="INTEGER" />
+    <result column="is_admire" property="isAdmire" jdbcType="INTEGER" />
+    <result column="descript" property="descript" jdbcType="VARCHAR" />
+    <result column="regist_time" property="registTime" jdbcType="VARCHAR" />
+    <result column="qrcode_img" property="qrcodeImg" jdbcType="VARCHAR" />
+    <result column="eflag" property="eflag" jdbcType="INTEGER" />
+    <result column="fans_img" property="fansImg" jdbcType="VARCHAR" />
+    <result column="mfanst_img" property="mfanstImg" jdbcType="VARCHAR" />
+    <result column="fans_area_img" property="fansAreaImg" jdbcType="VARCHAR" />
+    <result column="fansspo_img" property="fansspoImg" jdbcType="VARCHAR" />
+    <result column="fansspt_img" property="fanssptImg" jdbcType="VARCHAR" />
+    <result column="zan" property="zan" jdbcType="INTEGER" />
+    <result column="view" property="view" jdbcType="INTEGER" />
+    <result column="mark" property="mark" jdbcType="INTEGER" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    <result column="is_line" property="isLine" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, wmid, user_id, wxmp_num, wxmp_name, wxmp_style, wtype_id, fans, wprice, girl_fans, 
+    top_uv, main_type, is_change_mt, fsarea_id, mflow, isauth, status, read_num, is_create, 
+    is_admire, descript, regist_time, qrcode_img, eflag, fans_img, mfanst_img, fans_area_img, 
+    fansspo_img, fansspt_img, zan, view, mark, insert_time, update_time, is_del, is_line
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wxmp
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wxmp
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wupao.vipwss.pojo.Wxmp" >
+    insert into wxmp (id, wmid, user_id, 
+      wxmp_num, wxmp_name, wxmp_style, 
+      wtype_id, fans, wprice, 
+      girl_fans, top_uv, main_type, 
+      is_change_mt, fsarea_id, mflow, 
+      isauth, status, read_num, 
+      is_create, is_admire, descript, 
+      regist_time, qrcode_img, eflag, 
+      fans_img, mfanst_img, fans_area_img, 
+      fansspo_img, fansspt_img, zan, 
+      view, mark, insert_time, 
+      update_time, is_del, is_line
+      )
+    values (#{id,jdbcType=INTEGER}, #{wmid,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{wxmpNum,jdbcType=VARCHAR}, #{wxmpName,jdbcType=VARCHAR}, #{wxmpStyle,jdbcType=INTEGER}, 
+      #{wtypeId,jdbcType=INTEGER}, #{fans,jdbcType=BIGINT}, #{wprice,jdbcType=DECIMAL}, 
+      #{girlFans,jdbcType=VARCHAR}, #{topUv,jdbcType=VARCHAR}, #{mainType,jdbcType=INTEGER}, 
+      #{isChangeMt,jdbcType=INTEGER}, #{fsareaId,jdbcType=INTEGER}, #{mflow,jdbcType=VARCHAR}, 
+      #{isauth,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{readNum,jdbcType=BIGINT}, 
+      #{isCreate,jdbcType=INTEGER}, #{isAdmire,jdbcType=INTEGER}, #{descript,jdbcType=VARCHAR}, 
+      #{registTime,jdbcType=VARCHAR}, #{qrcodeImg,jdbcType=VARCHAR}, #{eflag,jdbcType=INTEGER}, 
+      #{fansImg,jdbcType=VARCHAR}, #{mfanstImg,jdbcType=VARCHAR}, #{fansAreaImg,jdbcType=VARCHAR}, 
+      #{fansspoImg,jdbcType=VARCHAR}, #{fanssptImg,jdbcType=VARCHAR}, #{zan,jdbcType=INTEGER}, 
+      #{view,jdbcType=INTEGER}, #{mark,jdbcType=INTEGER}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{isDel,jdbcType=INTEGER}, #{isLine,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wupao.vipwss.pojo.Wxmp" >
+    insert into wxmp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="wmid != null" >
+        wmid,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="wxmpNum != null" >
+        wxmp_num,
+      </if>
+      <if test="wxmpName != null" >
+        wxmp_name,
+      </if>
+      <if test="wxmpStyle != null" >
+        wxmp_style,
+      </if>
+      <if test="wtypeId != null" >
+        wtype_id,
+      </if>
+      <if test="fans != null" >
+        fans,
+      </if>
+      <if test="wprice != null" >
+        wprice,
+      </if>
+      <if test="girlFans != null" >
+        girl_fans,
+      </if>
+      <if test="topUv != null" >
+        top_uv,
+      </if>
+      <if test="mainType != null" >
+        main_type,
+      </if>
+      <if test="isChangeMt != null" >
+        is_change_mt,
+      </if>
+      <if test="fsareaId != null" >
+        fsarea_id,
+      </if>
+      <if test="mflow != null" >
+        mflow,
+      </if>
+      <if test="isauth != null" >
+        isauth,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="readNum != null" >
+        read_num,
+      </if>
+      <if test="isCreate != null" >
+        is_create,
+      </if>
+      <if test="isAdmire != null" >
+        is_admire,
+      </if>
+      <if test="descript != null" >
+        descript,
+      </if>
+      <if test="registTime != null" >
+        regist_time,
+      </if>
+      <if test="qrcodeImg != null" >
+        qrcode_img,
+      </if>
+      <if test="eflag != null" >
+        eflag,
+      </if>
+      <if test="fansImg != null" >
+        fans_img,
+      </if>
+      <if test="mfanstImg != null" >
+        mfanst_img,
+      </if>
+      <if test="fansAreaImg != null" >
+        fans_area_img,
+      </if>
+      <if test="fansspoImg != null" >
+        fansspo_img,
+      </if>
+      <if test="fanssptImg != null" >
+        fansspt_img,
+      </if>
+      <if test="zan != null" >
+        zan,
+      </if>
+      <if test="view != null" >
+        view,
+      </if>
+      <if test="mark != null" >
+        mark,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="isLine != null" >
+        is_line,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="wmid != null" >
+        #{wmid,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="wxmpNum != null" >
+        #{wxmpNum,jdbcType=VARCHAR},
+      </if>
+      <if test="wxmpName != null" >
+        #{wxmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="wxmpStyle != null" >
+        #{wxmpStyle,jdbcType=INTEGER},
+      </if>
+      <if test="wtypeId != null" >
+        #{wtypeId,jdbcType=INTEGER},
+      </if>
+      <if test="fans != null" >
+        #{fans,jdbcType=BIGINT},
+      </if>
+      <if test="wprice != null" >
+        #{wprice,jdbcType=DECIMAL},
+      </if>
+      <if test="girlFans != null" >
+        #{girlFans,jdbcType=VARCHAR},
+      </if>
+      <if test="topUv != null" >
+        #{topUv,jdbcType=VARCHAR},
+      </if>
+      <if test="mainType != null" >
+        #{mainType,jdbcType=INTEGER},
+      </if>
+      <if test="isChangeMt != null" >
+        #{isChangeMt,jdbcType=INTEGER},
+      </if>
+      <if test="fsareaId != null" >
+        #{fsareaId,jdbcType=INTEGER},
+      </if>
+      <if test="mflow != null" >
+        #{mflow,jdbcType=VARCHAR},
+      </if>
+      <if test="isauth != null" >
+        #{isauth,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="readNum != null" >
+        #{readNum,jdbcType=BIGINT},
+      </if>
+      <if test="isCreate != null" >
+        #{isCreate,jdbcType=INTEGER},
+      </if>
+      <if test="isAdmire != null" >
+        #{isAdmire,jdbcType=INTEGER},
+      </if>
+      <if test="descript != null" >
+        #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="registTime != null" >
+        #{registTime,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcodeImg != null" >
+        #{qrcodeImg,jdbcType=VARCHAR},
+      </if>
+      <if test="eflag != null" >
+        #{eflag,jdbcType=INTEGER},
+      </if>
+      <if test="fansImg != null" >
+        #{fansImg,jdbcType=VARCHAR},
+      </if>
+      <if test="mfanstImg != null" >
+        #{mfanstImg,jdbcType=VARCHAR},
+      </if>
+      <if test="fansAreaImg != null" >
+        #{fansAreaImg,jdbcType=VARCHAR},
+      </if>
+      <if test="fansspoImg != null" >
+        #{fansspoImg,jdbcType=VARCHAR},
+      </if>
+      <if test="fanssptImg != null" >
+        #{fanssptImg,jdbcType=VARCHAR},
+      </if>
+      <if test="zan != null" >
+        #{zan,jdbcType=INTEGER},
+      </if>
+      <if test="view != null" >
+        #{view,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null" >
+        #{mark,jdbcType=INTEGER},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="isLine != null" >
+        #{isLine,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wupao.vipwss.pojo.Wxmp" >
+    update wxmp
+    <set >
+      <if test="wmid != null" >
+        wmid = #{wmid,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="wxmpNum != null" >
+        wxmp_num = #{wxmpNum,jdbcType=VARCHAR},
+      </if>
+      <if test="wxmpName != null" >
+        wxmp_name = #{wxmpName,jdbcType=VARCHAR},
+      </if>
+      <if test="wxmpStyle != null" >
+        wxmp_style = #{wxmpStyle,jdbcType=INTEGER},
+      </if>
+      <if test="wtypeId != null" >
+        wtype_id = #{wtypeId,jdbcType=INTEGER},
+      </if>
+      <if test="fans != null" >
+        fans = #{fans,jdbcType=BIGINT},
+      </if>
+      <if test="wprice != null" >
+        wprice = #{wprice,jdbcType=DECIMAL},
+      </if>
+      <if test="girlFans != null" >
+        girl_fans = #{girlFans,jdbcType=VARCHAR},
+      </if>
+      <if test="topUv != null" >
+        top_uv = #{topUv,jdbcType=VARCHAR},
+      </if>
+      <if test="mainType != null" >
+        main_type = #{mainType,jdbcType=INTEGER},
+      </if>
+      <if test="isChangeMt != null" >
+        is_change_mt = #{isChangeMt,jdbcType=INTEGER},
+      </if>
+      <if test="fsareaId != null" >
+        fsarea_id = #{fsareaId,jdbcType=INTEGER},
+      </if>
+      <if test="mflow != null" >
+        mflow = #{mflow,jdbcType=VARCHAR},
+      </if>
+      <if test="isauth != null" >
+        isauth = #{isauth,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="readNum != null" >
+        read_num = #{readNum,jdbcType=BIGINT},
+      </if>
+      <if test="isCreate != null" >
+        is_create = #{isCreate,jdbcType=INTEGER},
+      </if>
+      <if test="isAdmire != null" >
+        is_admire = #{isAdmire,jdbcType=INTEGER},
+      </if>
+      <if test="descript != null" >
+        descript = #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="registTime != null" >
+        regist_time = #{registTime,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcodeImg != null" >
+        qrcode_img = #{qrcodeImg,jdbcType=VARCHAR},
+      </if>
+      <if test="eflag != null" >
+        eflag = #{eflag,jdbcType=INTEGER},
+      </if>
+      <if test="fansImg != null" >
+        fans_img = #{fansImg,jdbcType=VARCHAR},
+      </if>
+      <if test="mfanstImg != null" >
+        mfanst_img = #{mfanstImg,jdbcType=VARCHAR},
+      </if>
+      <if test="fansAreaImg != null" >
+        fans_area_img = #{fansAreaImg,jdbcType=VARCHAR},
+      </if>
+      <if test="fansspoImg != null" >
+        fansspo_img = #{fansspoImg,jdbcType=VARCHAR},
+      </if>
+      <if test="fanssptImg != null" >
+        fansspt_img = #{fanssptImg,jdbcType=VARCHAR},
+      </if>
+      <if test="zan != null" >
+        zan = #{zan,jdbcType=INTEGER},
+      </if>
+      <if test="view != null" >
+        view = #{view,jdbcType=INTEGER},
+      </if>
+      <if test="mark != null" >
+        mark = #{mark,jdbcType=INTEGER},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="isLine != null" >
+        is_line = #{isLine,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wupao.vipwss.pojo.Wxmp" >
+    update wxmp
+    set wmid = #{wmid,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      wxmp_num = #{wxmpNum,jdbcType=VARCHAR},
+      wxmp_name = #{wxmpName,jdbcType=VARCHAR},
+      wxmp_style = #{wxmpStyle,jdbcType=INTEGER},
+      wtype_id = #{wtypeId,jdbcType=INTEGER},
+      fans = #{fans,jdbcType=BIGINT},
+      wprice = #{wprice,jdbcType=DECIMAL},
+      girl_fans = #{girlFans,jdbcType=VARCHAR},
+      top_uv = #{topUv,jdbcType=VARCHAR},
+      main_type = #{mainType,jdbcType=INTEGER},
+      is_change_mt = #{isChangeMt,jdbcType=INTEGER},
+      fsarea_id = #{fsareaId,jdbcType=INTEGER},
+      mflow = #{mflow,jdbcType=VARCHAR},
+      isauth = #{isauth,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      read_num = #{readNum,jdbcType=BIGINT},
+      is_create = #{isCreate,jdbcType=INTEGER},
+      is_admire = #{isAdmire,jdbcType=INTEGER},
+      descript = #{descript,jdbcType=VARCHAR},
+      regist_time = #{registTime,jdbcType=VARCHAR},
+      qrcode_img = #{qrcodeImg,jdbcType=VARCHAR},
+      eflag = #{eflag,jdbcType=INTEGER},
+      fans_img = #{fansImg,jdbcType=VARCHAR},
+      mfanst_img = #{mfanstImg,jdbcType=VARCHAR},
+      fans_area_img = #{fansAreaImg,jdbcType=VARCHAR},
+      fansspo_img = #{fansspoImg,jdbcType=VARCHAR},
+      fansspt_img = #{fanssptImg,jdbcType=VARCHAR},
+      zan = #{zan,jdbcType=INTEGER},
+      view = #{view,jdbcType=INTEGER},
+      mark = #{mark,jdbcType=INTEGER},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_del = #{isDel,jdbcType=INTEGER},
+      is_line = #{isLine,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

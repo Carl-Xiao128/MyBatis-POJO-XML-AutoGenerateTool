@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mdd.admin.mapper.MddCompanyRegisterMapper">
+  <resultMap id="BaseResultMap" type="com.mdd.admin.pojo.MddCompanyRegister">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="area_province" jdbcType="INTEGER" property="areaProvince" />
+    <result column="area_city" jdbcType="INTEGER" property="areaCity" />
+    <result column="register_type" jdbcType="INTEGER" property="registerType" />
+    <result column="qualification_type" jdbcType="INTEGER" property="qualificationType" />
+    <result column="register_area_type" jdbcType="INTEGER" property="registerAreaType" />
+    <result column="bank_type" jdbcType="INTEGER" property="bankType" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="create_agent" jdbcType="VARCHAR" property="createAgent" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_agent" jdbcType="VARCHAR" property="updateAgent" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="is_from" jdbcType="INTEGER" property="isFrom" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, area_province, area_city, register_type, qualification_type, register_area_type, 
+    bank_type, price, create_agent, create_date, update_agent, update_date, is_from
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mdd_company_register
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mdd_company_register
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mdd.admin.pojo.MddCompanyRegister">
+    insert into mdd_company_register (id, name, area_province, 
+      area_city, register_type, qualification_type, 
+      register_area_type, bank_type, price, 
+      create_agent, create_date, update_agent, 
+      update_date, is_from)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{areaProvince,jdbcType=INTEGER}, 
+      #{areaCity,jdbcType=INTEGER}, #{registerType,jdbcType=INTEGER}, #{qualificationType,jdbcType=INTEGER}, 
+      #{registerAreaType,jdbcType=INTEGER}, #{bankType,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
+      #{createAgent,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateAgent,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{isFrom,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mdd.admin.pojo.MddCompanyRegister">
+    insert into mdd_company_register
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="areaProvince != null">
+        area_province,
+      </if>
+      <if test="areaCity != null">
+        area_city,
+      </if>
+      <if test="registerType != null">
+        register_type,
+      </if>
+      <if test="qualificationType != null">
+        qualification_type,
+      </if>
+      <if test="registerAreaType != null">
+        register_area_type,
+      </if>
+      <if test="bankType != null">
+        bank_type,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="createAgent != null">
+        create_agent,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateAgent != null">
+        update_agent,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="isFrom != null">
+        is_from,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="areaProvince != null">
+        #{areaProvince,jdbcType=INTEGER},
+      </if>
+      <if test="areaCity != null">
+        #{areaCity,jdbcType=INTEGER},
+      </if>
+      <if test="registerType != null">
+        #{registerType,jdbcType=INTEGER},
+      </if>
+      <if test="qualificationType != null">
+        #{qualificationType,jdbcType=INTEGER},
+      </if>
+      <if test="registerAreaType != null">
+        #{registerAreaType,jdbcType=INTEGER},
+      </if>
+      <if test="bankType != null">
+        #{bankType,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createAgent != null">
+        #{createAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAgent != null">
+        #{updateAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isFrom != null">
+        #{isFrom,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mdd.admin.pojo.MddCompanyRegister">
+    update mdd_company_register
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="areaProvince != null">
+        area_province = #{areaProvince,jdbcType=INTEGER},
+      </if>
+      <if test="areaCity != null">
+        area_city = #{areaCity,jdbcType=INTEGER},
+      </if>
+      <if test="registerType != null">
+        register_type = #{registerType,jdbcType=INTEGER},
+      </if>
+      <if test="qualificationType != null">
+        qualification_type = #{qualificationType,jdbcType=INTEGER},
+      </if>
+      <if test="registerAreaType != null">
+        register_area_type = #{registerAreaType,jdbcType=INTEGER},
+      </if>
+      <if test="bankType != null">
+        bank_type = #{bankType,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createAgent != null">
+        create_agent = #{createAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAgent != null">
+        update_agent = #{updateAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isFrom != null">
+        is_from = #{isFrom,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mdd.admin.pojo.MddCompanyRegister">
+    update mdd_company_register
+    set name = #{name,jdbcType=VARCHAR},
+      area_province = #{areaProvince,jdbcType=INTEGER},
+      area_city = #{areaCity,jdbcType=INTEGER},
+      register_type = #{registerType,jdbcType=INTEGER},
+      qualification_type = #{qualificationType,jdbcType=INTEGER},
+      register_area_type = #{registerAreaType,jdbcType=INTEGER},
+      bank_type = #{bankType,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      create_agent = #{createAgent,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_agent = #{updateAgent,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      is_from = #{isFrom,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.mdd.admin.pojo.MddCompanyRegister">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="area_province" jdbcType="INTEGER" property="areaProvince" />
+    <result column="area_city" jdbcType="INTEGER" property="areaCity" />
+    <result column="register_type" jdbcType="INTEGER" property="registerType" />
+    <result column="qualification_type" jdbcType="INTEGER" property="qualificationType" />
+    <result column="register_area_type" jdbcType="INTEGER" property="registerAreaType" />
+    <result column="bank_type" jdbcType="INTEGER" property="bankType" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="create_agent" jdbcType="VARCHAR" property="createAgent" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_agent" jdbcType="VARCHAR" property="updateAgent" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, area_province, area_city, register_type, qualification_type, register_area_type, 
+    bank_type, price, create_agent, create_date, update_agent, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mdd_company_register
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mdd_company_register
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mdd.admin.pojo.MddCompanyRegister">
+    insert into mdd_company_register (id, name, area_province, 
+      area_city, register_type, qualification_type, 
+      register_area_type, bank_type, price, 
+      create_agent, create_date, update_agent, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{areaProvince,jdbcType=INTEGER}, 
+      #{areaCity,jdbcType=INTEGER}, #{registerType,jdbcType=INTEGER}, #{qualificationType,jdbcType=INTEGER}, 
+      #{registerAreaType,jdbcType=INTEGER}, #{bankType,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
+      #{createAgent,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateAgent,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mdd.admin.pojo.MddCompanyRegister">
+    insert into mdd_company_register
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="areaProvince != null">
+        area_province,
+      </if>
+      <if test="areaCity != null">
+        area_city,
+      </if>
+      <if test="registerType != null">
+        register_type,
+      </if>
+      <if test="qualificationType != null">
+        qualification_type,
+      </if>
+      <if test="registerAreaType != null">
+        register_area_type,
+      </if>
+      <if test="bankType != null">
+        bank_type,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="createAgent != null">
+        create_agent,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateAgent != null">
+        update_agent,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="areaProvince != null">
+        #{areaProvince,jdbcType=INTEGER},
+      </if>
+      <if test="areaCity != null">
+        #{areaCity,jdbcType=INTEGER},
+      </if>
+      <if test="registerType != null">
+        #{registerType,jdbcType=INTEGER},
+      </if>
+      <if test="qualificationType != null">
+        #{qualificationType,jdbcType=INTEGER},
+      </if>
+      <if test="registerAreaType != null">
+        #{registerAreaType,jdbcType=INTEGER},
+      </if>
+      <if test="bankType != null">
+        #{bankType,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createAgent != null">
+        #{createAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAgent != null">
+        #{updateAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mdd.admin.pojo.MddCompanyRegister">
+    update mdd_company_register
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="areaProvince != null">
+        area_province = #{areaProvince,jdbcType=INTEGER},
+      </if>
+      <if test="areaCity != null">
+        area_city = #{areaCity,jdbcType=INTEGER},
+      </if>
+      <if test="registerType != null">
+        register_type = #{registerType,jdbcType=INTEGER},
+      </if>
+      <if test="qualificationType != null">
+        qualification_type = #{qualificationType,jdbcType=INTEGER},
+      </if>
+      <if test="registerAreaType != null">
+        register_area_type = #{registerAreaType,jdbcType=INTEGER},
+      </if>
+      <if test="bankType != null">
+        bank_type = #{bankType,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createAgent != null">
+        create_agent = #{createAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAgent != null">
+        update_agent = #{updateAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mdd.admin.pojo.MddCompanyRegister">
+    update mdd_company_register
+    set name = #{name,jdbcType=VARCHAR},
+      area_province = #{areaProvince,jdbcType=INTEGER},
+      area_city = #{areaCity,jdbcType=INTEGER},
+      register_type = #{registerType,jdbcType=INTEGER},
+      qualification_type = #{qualificationType,jdbcType=INTEGER},
+      register_area_type = #{registerAreaType,jdbcType=INTEGER},
+      bank_type = #{bankType,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      create_agent = #{createAgent,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_agent = #{updateAgent,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <sql id="Search_Column_List" >
+    mcr.id, mcr.name, cp.name areaProvince, cc.name areaCity, mcr.register_type, mcr.qualification_type, mcr.register_area_type, 
+    mcr.bank_type, mcr.price, mcr.create_agent, mcr.create_date, mcr.update_agent, mcr.update_time
+  </sql>
+  <select id="conpanyRegisterList" resultType="com.mdd.admin.vo.CompanyRegisterVO">
+    select
+  	<include refid="Search_Column_List"/>
+  	from mdd_company_register mcr
+  	left join city cp on mcr.area_province = cp.id
+  	left join city cc on mcr.area_city = cc.id
+  	<where>
+	  	<if test="param.areaProvince!=null">
+	  		and mcr.area_province = #{param.areaProvince}
+	  	</if>
+	  	<if test="param.areaCity!=null">
+	  		and mcr.area_city = #{param.areaCity}
+	  	</if>
+  	</where> 
+  	order by mcr.create_date desc
+  </select>
+  
+</mapper>

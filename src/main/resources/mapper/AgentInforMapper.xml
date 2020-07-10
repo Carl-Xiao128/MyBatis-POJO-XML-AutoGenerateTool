@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wupao.job.mapper.AgentInforMapper" >
+  <resultMap id="BaseResultMap" type="com.wupao.job.pojo.AgentInfor" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="fid" property="fid" jdbcType="VARCHAR" />
+    <result column="istype" property="istype" jdbcType="INTEGER" />
+    <result column="ww_name" property="wwName" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="exae_uid" property="exaeUid" jdbcType="INTEGER" />
+    <result column="wupao_name" property="wupaoName" jdbcType="VARCHAR" />
+    <result column="wupao_uid" property="wupaoUid" jdbcType="INTEGER" />
+    <result column="shop_type" property="shopType" jdbcType="INTEGER" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="iqq" property="iqq" jdbcType="VARCHAR" />
+    <result column="weixin" property="weixin" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="req_desc" property="reqDesc" jdbcType="VARCHAR" />
+    <result column="borrow_money" property="borrowMoney" jdbcType="DECIMAL" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="examine_time" property="examineTime" jdbcType="TIMESTAMP" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="put_status" property="putStatus" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="isDel" property="isdel" jdbcType="INTEGER" />
+    <result column="money_time" property="moneyTime" jdbcType="TIMESTAMP" />
+    <result column="wpname_insetime" property="wpnameInsetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, fid, istype, ww_name, user_id, exae_uid, wupao_name, wupao_uid, shop_type, telephone, 
+    iqq, weixin, nickname, req_desc, borrow_money, update_time, insert_time, examine_time, 
+    money, put_status, status, reason, remark, isDel, money_time, wpname_insetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from agent_infor
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from agent_infor
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wupao.job.pojo.AgentInfor" >
+    insert into agent_infor (id, fid, istype, 
+      ww_name, user_id, exae_uid, 
+      wupao_name, wupao_uid, shop_type, 
+      telephone, iqq, weixin, 
+      nickname, req_desc, borrow_money, 
+      update_time, insert_time, examine_time, 
+      money, put_status, status, 
+      reason, remark, isDel, 
+      money_time, wpname_insetime)
+    values (#{id,jdbcType=INTEGER}, #{fid,jdbcType=VARCHAR}, #{istype,jdbcType=INTEGER}, 
+      #{wwName,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{exaeUid,jdbcType=INTEGER}, 
+      #{wupaoName,jdbcType=VARCHAR}, #{wupaoUid,jdbcType=INTEGER}, #{shopType,jdbcType=INTEGER}, 
+      #{telephone,jdbcType=VARCHAR}, #{iqq,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{reqDesc,jdbcType=VARCHAR}, #{borrowMoney,jdbcType=DECIMAL}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{insertTime,jdbcType=TIMESTAMP}, #{examineTime,jdbcType=TIMESTAMP}, 
+      #{money,jdbcType=DECIMAL}, #{putStatus,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{reason,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{isdel,jdbcType=INTEGER}, 
+      #{moneyTime,jdbcType=TIMESTAMP}, #{wpnameInsetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wupao.job.pojo.AgentInfor" >
+    insert into agent_infor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fid != null" >
+        fid,
+      </if>
+      <if test="istype != null" >
+        istype,
+      </if>
+      <if test="wwName != null" >
+        ww_name,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="exaeUid != null" >
+        exae_uid,
+      </if>
+      <if test="wupaoName != null" >
+        wupao_name,
+      </if>
+      <if test="wupaoUid != null" >
+        wupao_uid,
+      </if>
+      <if test="shopType != null" >
+        shop_type,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="iqq != null" >
+        iqq,
+      </if>
+      <if test="weixin != null" >
+        weixin,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="reqDesc != null" >
+        req_desc,
+      </if>
+      <if test="borrowMoney != null" >
+        borrow_money,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="examineTime != null" >
+        examine_time,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="putStatus != null" >
+        put_status,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="isdel != null" >
+        isDel,
+      </if>
+      <if test="moneyTime != null" >
+        money_time,
+      </if>
+      <if test="wpnameInsetime != null" >
+        wpname_insetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null" >
+        #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="istype != null" >
+        #{istype,jdbcType=INTEGER},
+      </if>
+      <if test="wwName != null" >
+        #{wwName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="exaeUid != null" >
+        #{exaeUid,jdbcType=INTEGER},
+      </if>
+      <if test="wupaoName != null" >
+        #{wupaoName,jdbcType=VARCHAR},
+      </if>
+      <if test="wupaoUid != null" >
+        #{wupaoUid,jdbcType=INTEGER},
+      </if>
+      <if test="shopType != null" >
+        #{shopType,jdbcType=INTEGER},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="iqq != null" >
+        #{iqq,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="reqDesc != null" >
+        #{reqDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="borrowMoney != null" >
+        #{borrowMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examineTime != null" >
+        #{examineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="putStatus != null" >
+        #{putStatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isdel != null" >
+        #{isdel,jdbcType=INTEGER},
+      </if>
+      <if test="moneyTime != null" >
+        #{moneyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wpnameInsetime != null" >
+        #{wpnameInsetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wupao.job.pojo.AgentInfor" >
+    update agent_infor
+    <set >
+      <if test="fid != null" >
+        fid = #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="istype != null" >
+        istype = #{istype,jdbcType=INTEGER},
+      </if>
+      <if test="wwName != null" >
+        ww_name = #{wwName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="exaeUid != null" >
+        exae_uid = #{exaeUid,jdbcType=INTEGER},
+      </if>
+      <if test="wupaoName != null" >
+        wupao_name = #{wupaoName,jdbcType=VARCHAR},
+      </if>
+      <if test="wupaoUid != null" >
+        wupao_uid = #{wupaoUid,jdbcType=INTEGER},
+      </if>
+      <if test="shopType != null" >
+        shop_type = #{shopType,jdbcType=INTEGER},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="iqq != null" >
+        iqq = #{iqq,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="reqDesc != null" >
+        req_desc = #{reqDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="borrowMoney != null" >
+        borrow_money = #{borrowMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examineTime != null" >
+        examine_time = #{examineTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="putStatus != null" >
+        put_status = #{putStatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isdel != null" >
+        isDel = #{isdel,jdbcType=INTEGER},
+      </if>
+      <if test="moneyTime != null" >
+        money_time = #{moneyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wpnameInsetime != null" >
+        wpname_insetime = #{wpnameInsetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wupao.job.pojo.AgentInfor" >
+    update agent_infor
+    set fid = #{fid,jdbcType=VARCHAR},
+      istype = #{istype,jdbcType=INTEGER},
+      ww_name = #{wwName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      exae_uid = #{exaeUid,jdbcType=INTEGER},
+      wupao_name = #{wupaoName,jdbcType=VARCHAR},
+      wupao_uid = #{wupaoUid,jdbcType=INTEGER},
+      shop_type = #{shopType,jdbcType=INTEGER},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      iqq = #{iqq,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      req_desc = #{reqDesc,jdbcType=VARCHAR},
+      borrow_money = #{borrowMoney,jdbcType=DECIMAL},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      examine_time = #{examineTime,jdbcType=TIMESTAMP},
+      money = #{money,jdbcType=DECIMAL},
+      put_status = #{putStatus,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      isDel = #{isdel,jdbcType=INTEGER},
+      money_time = #{moneyTime,jdbcType=TIMESTAMP},
+      wpname_insetime = #{wpnameInsetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
